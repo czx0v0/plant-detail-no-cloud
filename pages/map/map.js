@@ -4,7 +4,7 @@
 //植物信息来源：iplant.cn
 const detailArray = [{
   id: 1,
-  image:"../../sources/img/iplant-gongfenyangtijia.png",
+  image:"../../sources/img/iplant-gongfenyangtijia.jpg",
   title: `宫粉羊蹄甲`,
   content: `形态特征
     生活型：	落叶乔木；
