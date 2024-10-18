@@ -1,0 +1,4 @@
+<!--components/barrage/barrage.wxml-->
+<view class="barrage-container">
+<view class = "barrage" wx:for="{{emojiBarrage.emojiArray}}" wx:key="index">{{item}}</view>
+</view>

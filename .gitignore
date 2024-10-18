@@ -1,0 +1,22 @@
+# Windows
+[Dd]esktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+
+# Node.js
+node_modules/
+
+# 微信小程序配置文件
+project.config.json
+project.private.config.json
+# 云函数配置文件
+**/config.json
+# 云开发环境ID文件
+**/env.list

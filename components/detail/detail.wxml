@@ -1,0 +1,26 @@
+<!--components/detail/detail.wxml-->
+<view class="barrage-mask" wx:if="{{markerInfo.show}}">
+  <barrage emojiBarrage="{{emojiDetail}}"></barrage>
+</view>
+<view class="detail-mask" wx:if="{{markerInfo.show}}">
+  <view class="detail-container">
+    <view class="detail-header">
+      <image class="go-back" bindtap="backToMap" src="../../sources/img/zijing-back.png">返回</image>
+      <text class="detail-title">{{markerInfo.title}}</text>
+    </view>
+    <view class="detail-body">
+    <view class="image-container">
+      <image class = "detail-image" src="{{markerInfo.image}}" alt="the picture of the plant" mode="aspectFill"/>
+    </view>
+      <text class="detail-content">{{markerInfo.content}}</text>
+    </view>
+    <view class="detail-footer">
+      <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F60D;">&#x1F60D;</view>
+      <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F62D;">&#x1F62D;</view>
+      <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F338;">&#x1F338;</view>
+      <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F33B;">&#x1F33B;</view>
+      <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F620;">&#x1F620;</view>
+      <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F340;">&#x1F340;</view>
+    </view>
+  </view>
+</view>
