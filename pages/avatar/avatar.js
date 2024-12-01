@@ -1,39 +1,27 @@
 // pages/avatar/avatar.js
+const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    avatar_info: '',
-    localFilepath:'',
-    bgTextStyle: 'dark',
-    scrollTop: '200rpx',
-    bgColor: '#ff0000',
-    bgColorTop: '#00ff00',
-    bgColorBottom: '#0000ff',
-    nbTitle: '标题',
-    nbLoading: false,
-    nbFrontColor: '#000000',
-    nbBackgroundColor: '#ffffff',
+    avatarUrl: defaultAvatarUrl,
+    nickname:'匿名',
+    nicknameInputShow:true,
+    avatarWrapperShow:true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.setData({
-      nbTitle: '1',
-      nbLoading: true,
-      nbFrontColor: 'green',
-      nbBackgroundColor: '#fff',
-    })
-    this.setData({
-      // avatar_info: '../../sources/img/avatar.JPG'
-    })
-    this.drawAvatarFrame()
+    this.loadNickname();//检查本地昵称加载
+    this.loadAvatar(); //检查本地头像加载
+    this.drawAvatarFrame();//绘制头像和头像框
   },
   drawAvatarFrame() {
+    // 存储this
+    var that = this;
     const query = wx.createSelectorQuery()
     query.select('#avatarCanvas')
       .fields({
@@ -57,38 +45,37 @@ Page({
         const avatarSize = avatarWidth * 0.8; // 头像尺寸
         const avatarOffset = avatarWidth * 0.1; // 边距
         const avatarImg = canvas.createImage(); //头像图像
-        avatarImg.src = this.data.avatar_info;
-        avatarImg.onload=()=>{
-        //   ctx.beginPath();
-        // ctx.arc(
-        //   avatarWidth * 0.8,
-        //   avatarWidth * 0.8,
-        //   avatarSize ,
-        //   0,
-        //   2 * Math.PI
-        // );
-        // ctx.clip();
-        ctx.drawImage(
-          avatarImg,
-          avatarOffset,
-          avatarOffset,
-          avatarSize,
-          avatarSize
-        );
-        // 绘制头像框
-        this.drawFrame(canvas, avatarWidth);
-        }
-        
-
+        // 从链接获取头像图像信息
+        wx.getImageInfo({
+          src: this.data.avatarUrl,
+          success: function (res) {
+            //成功后 尝试加载图像
+            console.log('get image info success')
+            avatarImg.src = res.path;
+            // 加载成功后开始绘制
+            avatarImg.onload = () => {
+              // 绘制头像
+              ctx.drawImage(
+                avatarImg,
+                avatarOffset,
+                avatarOffset,
+                avatarSize,
+                avatarSize
+              );
+              // 绘制头像框
+              that.drawFrame(canvas, avatarWidth);
+            }
+          }
+        });
       })
-
   },
   drawFrame(canvas, avatarWidth) {
     const frameSize = avatarWidth * 0.3;
     const ctx = canvas.getContext('2d');
+    // 头像框的位置
     const framePosition = [{
         x: 0,
-        y: frameSize*0.4
+        y: frameSize * 0.4
       },
       {
         x: avatarWidth - frameSize,
@@ -99,66 +86,87 @@ Page({
         y: avatarWidth - frameSize
       },
       {
-        x: avatarWidth - frameSize*1.3,
-        y: avatarWidth - frameSize*1.3
+        x: avatarWidth - frameSize * 1.3,
+        y: avatarWidth - frameSize * 1.3
       }
     ];
     framePosition.forEach((pos, index) => {
       console.log(index);
       const frameImg = canvas.createImage()
-      if(index == 0){
+      if (index == 0) {
         frameImg.src = "../../sources/img/ava1.png";
-      }else if(index==1){
+      } else if (index == 1) {
         frameImg.src = "../../sources/img/ava2.png";
-      }else if(index==2){
+      } else if (index == 2) {
         frameImg.src = "../../sources/img/ava3.png";
-      }else{
+      } else {
         frameImg.src = "../../sources/img/ava4.png";
       }
-      frameImg.onload = () =>{
+      frameImg.onload = () => {
         ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
       }
-      
     });
   },
-  onGetUserInfo:function(e){
-    var that = this;
-    if(e.detail.userInfo){
-      console.log(e.detail.userInfo)
-      const userInfo = e.detail.userInfo;
-      const avatarurl = userInfo.avatarUrl;
-      // let tempFilePath = ''
-      let savedFilePath = ''
-      wx.downloadFile({
-        url: avatarurl,
-        success:function(res){
-          console.log('success')
-          wx.saveFile({
-            tempFilePath:res.tempFilePath,
-            success:function(res){
-              console.log('success saved')
-              console.log(res.savedFilePath)
-              savedFilePath = res.savedFilePath;
-              that.setData({
-                localFilepath:savedFilePath
-              });
-            },
-            fail:function(err){
-              console.log(err)
-            }
-          })
-
-
-        }
+  onChooseAvatar(e) {
+    //头像选择
+    //（onGetUserInfo在新版本已不使用）
+    const {
+      avatarUrl
+    } = e.detail;
+    //更新Url值
+    this.setData({
+      avatarUrl,
+    });
+    //更新头像画布
+    this.drawAvatarFrame()
+    //本地存储头像信息
+    wx.setStorageSync('avatarUrl', avatarUrl);
+  },
+  onNicknameInput(e){
+    //昵称输入
+    const nickname = e.detail.value;
+    console.log(e.detail.value);
+    this.setData({ 
+      nickname,
+      nicknameInputShow:false
+     });
+    if(nickname){
+      wx.setStorageSync('nickname', nickname);
+    }
+  },
+  loadNickname(){
+    //检查本地昵称加载
+    const nickname = wx.getStorageSync('nickname');
+    if(nickname){
+      this.setData({
+        nickname,
+        nicknameInputShow:false
       });
-      console.log(that.data.localFilepath);
-      that.setData({
-        avatar_info:that.data.localFilepath
-      });
-      console.log(that.data.avatar_info);
-      that.drawAvatarFrame();
     }else{
-      console.log('no info')
+      nickname='匿名'
+    }
+  },
+  loadAvatar(){
+    //检查本地头像加载
+    const avatarUrl = wx.getStorageSync('avatarUrl');
+    if(avatarUrl){
+      this.setData({
+        avatarUrl,
+        avatarWrapperShow:false,
+      });
+    }else{
+      avatarUrl=defaultAvatarUrl
+    }
+  },
+  changeNickname(){
+    if(this.data.nicknameInputShow==true){
+      this.setData({
+        nicknameInputShow:false
+      })
+    }else{
+      this.setData({
+        nicknameInputShow:true
+      })
     }
   },
   /**
@@ -172,7 +180,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.loadNickname();//检查本地昵称加载
+    this.loadAvatar(); //检查本地头像加载
+    this.drawAvatarFrame();//绘制头像和头像框
   },
 
   /**
@@ -193,7 +203,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    this.loadNickname();//检查本地昵称加载
+    this.loadAvatar(); //检查本地头像加载
+    this.drawAvatarFrame();//绘制头像和头像框
   },
 
   /**

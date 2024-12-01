@@ -1,28 +1,17 @@
-<!--pages/avatar/avatar.wxml-->
-<!-- <text>pages/avatar/avatar.wxml</text> -->
-<page-meta
-background-text-style="{{bgTextStyle}}"
-  background-color="{{bgColor}}"
-  background-color-top="{{bgColorTop}}"
-  background-color-bottom="{{bgColorBottom}}"
-  scroll-top="{{scrollTop}}"
-  page-style="color: green"
-  root-font-size="16px">
-  <navigation-bar
-    title="{{nbTitle}}"
-    loading="{{nbLoading}}"
-    front-color="{{nbFrontColor}}"
-    background-color="{{nbBackgroundColor}}"
-    color-animation-duration="2000"
-    color-animation-timing-func="easeIn"
-  />
-</page-meta>
-<view class="elipse_1">
+<view class="avatar-page">
+  <!-- 占位view -->
+  <view style="height: 200rpx;"></view>
+  <!-- 头像框画布 -->
+  <input type="nickname" class="weui-input" placeholder="请输入昵称" bindconfirm="onNicknameInput" wx:if="{{nicknameInputShow}}" />
+  <view class="nickname" bind:tap="changeNickname"> 你好呀!{{nickname}}</view>
+  <view class="choose-avatar">
+    <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <view class="select-info" wx:if="{{avatarWrapperShow}}">请选择头像</view>
+      <canvas type='2d' canvas-id="avatarCanvas" id="avatarCanvas" class="avatar-canvas"></canvas>
+    </button>
+  </view>
+  <view class="ellipse_1">
+  </view>
+  <view class="ellipse_2">
+  </view>
 </view>
-<view class="elipse_2">
-</view>
-<view style="height: 200rpx;"></view>
-<canvas type = '2d' canvas-id="avatarCanvas"  id="avatarCanvas" class = "avatar-canvas"></canvas>
-
-
-<button class = 'get-usr-info' open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">getInfo</button>
