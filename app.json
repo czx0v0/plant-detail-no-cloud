@@ -1,16 +1,34 @@
 {
   "pages": [
+    "pages/avatar/avatar",
     "pages/map/map",
     "pages/detail/detail"
+    
   ],
   "window": {
+    "navigationStyle": "custom",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "植物地图信息",
-    "navigationBarBackgroundColor": "#cccccc"
+    "navigationBarBackgroundColor": "#cccccc",
+    "backgroundColor": "#eeeeee","backgroundTextStyle": "light",
+    "homeButton":true
   },
+  "tabBar": {
+    "custom": false,
+    "color": "#000",
+    "selectedColor": "#www",
+    "backgroundColor": "#fff",
+    "list": [{
+      "pagePath": "pages/map/map",
+      "text": "地图信息"
+    }, {
+      "pagePath": "pages/avatar/avatar",
+      "text": "头像"
+    }]
+  },
+  "usingComponents": {},
   "style": "v2",
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
-  
 }

@@ -1,0 +1,38 @@
+/* pages/avatar/avatar.wxss */
+.avatar-canvas{
+  width: 300rpx;
+  height:300rpx;
+  border-radius: 30%;
+  
+  overflow: hidden;
+  margin: 0 auto;
+  z-index: 999;
+  /* display: flex; */
+}
+.elipse_1 {
+  height: 512rpx;
+  width: 512rpx;
+  z-index: 90;
+  position: absolute;
+  top:80rpx;
+  right:40vw;
+  background: #8cf81f;
+  filter: blur(80rpx);
+  opacity: 35%;
+  border-radius: 50%;
+}
+.elipse_2 {
+  height: 622rpx;
+  width: 622rpx;
+  z-index: 90;
+  opacity: 35%;
+  left:50vw;
+  top:333rpx;
+  position: absolute;
+  filter: blur(80rpx);
+  background: #ffd608;
+  border-radius: 50%;
+}
+.get-usr-info{
+  z-index: 999;
+}

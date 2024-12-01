@@ -2,27 +2,60 @@
 .barrage-container{
   position: fixed;
   width: 100%;
-  height: 20%;
-  bottom: 75%;
+  height: 15%;
+  /* bottom: 0; */
   top: 0;
   left: 0;
   right: 0;
   overflow:visible;
-  z-index:999;
-  /* background-color: rgba(66, 255, 200, 0.5); */
+  z-index:990;
+  background-color: rgba(66, 255, 200, 0.5);
   display: flex;
   /* border:2rpx solid blue; */
   /* margin: 10rpx; */
   flex-wrap: wrap;
+  /* animation:barrageAnimation 5s; */
 }
 .barrage{
   color:black;
   padding: 0;
   font-size:20px;
   /* position: relative; */
-  animation: barrageAnimation 5s infinite;
+  /* animation: barrageAnimation 5s infinite; */
+  /* animation: barrageAnimation  5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; */
+  /* transform: translate(-50%,-50%); */
+  /* animation: animation-y 5s forwards; */
+  /* animation-fill-mode: forwards; */
+  /* animation-direction: alternate; */
+  /* animation:random-move 3s forwards; */
+  /* animation-timing-function:cubic-bezier(0.23, 1, 0.320, 1); */
+  /* position:absolute; */
+  left:120px;
+  bottom:560px;
+  animation: random-animation 5s ease-in;
+
 }
 @keyframes barrageAnimation{
-  0%{transform:translateX(300px);}
-  100%{transition:translateX(-0rpx);}
+  0%{transform:translateY(-3000%) rotate(0deg) translateX(80%);opacity: 1;}
+  25%{transform:translateY(-1800%) translateX(300%) rotate(90deg);}
+  50%{transform:translateY(-1200%) rotate(0deg) translateX(0%);}
+  75%{transform:translateY(-600%) translateX(300%) rotate(-90deg) ;}
+  100%{transform:translateY(-200%) rotate(0deg) translateX(300%)rotate(90deg);opacity: 0;}
+}
+@keyframes animation-x{
+  0%{transform:translateX(0%);}
+  50%{transform:translateX(50%)}
+  100%{transform:translateX(100%);}
+}
+@keyframes animation-y{
+  0%{transform:translateY(0%) rotate(0deg);}
+  50%{transform:translateY(50vh) translateX(100%) rotate(180deg);}
+  100%{transform:translateY(100vh) rotate(360deg);}
+}
+@keyframes random-animation{
+  0%{transform:translateY(0%) rotate(0deg);opacity: 1;}
+  50%{
+    transform:translateY(50%) translateX(var(--fallDirectionX));
+  }
+  100%{transform:translateY(100vh) rotate(360deg);opacity: 0;}
 }

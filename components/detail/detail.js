@@ -23,9 +23,15 @@ Component({
     emojiDetail: {
       show: true,
       emojiArray: [
-        "\u{1F338}"
+        // {
+        //   emojiText:"\u{1F62D}",
+        //   emojiDirection:1,
+        //   emojiTime:6,
+        //   animationData:{},
+        // }
       ]
-    }
+    },
+    emojiShow:false,
   },
 
   /**
@@ -43,20 +49,57 @@ Component({
       this.triggerEvent('backToMap');
     },
     addEmoji: function (event) {
+      //设置每个弹幕的随机初始运动方向
+      const fallDirection = Math.random(1)>0.5?1:-1;//向左/向右
+      const fallTime = Math.random()*3;
+
+      var animation = wx.createAnimation({
+        duration: 10,
+        timingFunction: 'ease-in-out',
+        delay:0
+      })
+      this.animation = animation
+      this.animation.translateX(0).translateY(0).step()
+
       // 接收按钮数据,显示新的表情
       this.triggerEvent('addEmoji')
-      let emoji = event.currentTarget.dataset.emoji;
-      emoji = emoji;
-      console.log(emoji)
+      let emojiText = event.currentTarget.dataset.emoji;
+      let emoji = {
+        emojiText:emojiText,
+        emojiDirection:fallDirection,
+        emojiTime:fallTime,
+        animationData:this.animation.export(),
+      };
+      console.log(emojiText)
       console.log(this.data.emojiDetail.emojiArray)
       this.setData({
         'emojiDetail.emojiArray': this.data.emojiDetail.emojiArray.concat(emoji)
       })
     },
+    emojiListShow:function(){
+      this.triggerEvent('emojiListShow')
+      console.log('emoji show')
+      if(this.data.emojiShow == false){
+        this.setData({
+          emojiShow:true
+        })
+      }else{
+        this.setData({
+          emojiShow:false
+        })
+      }
+
+    },
     resetData() {
       this.setData({
         'emojiDetail.emojiArray': [
-          "\u{1F338}"
+          {
+            emojiText:"\u{1F338}",
+            emojiDirection:1,
+            emojiTime:6,
+            animationData:{}
+          }
+         
         ]
       });
     }
