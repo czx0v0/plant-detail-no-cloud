@@ -4,14 +4,15 @@
 </view>
 <view class="detail-mask" wx:if="{{markerInfo.show}}">
   <view class="detail-container">
+  <view class="detail-back">
+  <image class="go-back" bindtap="backToMap" src="../../sources/img/back-x.png" mode="aspectFill">返回</image>
+  </view>
     <view class="detail-header">
       <view class="header-left">
         <view class="image-container">
           <image class="detail-image" src="{{markerInfo.image}}" alt="the picture of the plant" mode="aspectFill" />
         </view>
       </view>
-
-      <!-- <image class="go-back" bindtap="backToMap" src="../../sources/img/zijing-back.png">返回</image> -->
       <view class="header-right">
         <view class="header-right-top">
           <text class="detail-title">{{markerInfo.title}}</text>
@@ -25,10 +26,9 @@
             <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F340;">&#x1F340;</view>
           </view>
         <view class="header-right-bottom">       
-
+          <image class="header-emoji-icon" src="../../sources/img/SmileyHappy.png" bindtap="emojiListShow" mode="aspectFill" />
+          
           <image class="header-like-icon" src="../../sources/img/Heart.png" mode="aspectFill" />
-          <image class="header-emoji-icon" src="../../sources/img/Smiley Happy.png" bindtap="emojiListShow" mode="aspectFill" />
-
         </view>
       </view>
     </view>
@@ -39,10 +39,7 @@
       <text class="detail-content">{{markerInfo.content}}</text>
     </view>
     <view class="detail-footer">
-
-      <!-- <image class="go-back" bindtap="backToMap" src="../../sources/img/zijing-back.png">返回</image> -->
-      <button class="go-back" bindtap="backToMap">返回地图</button>
-
+      <button class="share-pic" bindtap="backToMap">分享</button>
     </view>
   </view>
 </view>

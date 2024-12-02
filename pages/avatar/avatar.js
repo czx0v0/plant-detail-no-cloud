@@ -116,6 +116,7 @@ Page({
     //更新Url值
     this.setData({
       avatarUrl,
+      avatarWrapperShow:false,
     });
     //更新头像画布
     this.drawAvatarFrame()
