@@ -4,7 +4,7 @@
 //植物信息来源：iplant.cn
 const detailArray = [{
   id: 1,
-  image:"cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/iplant-gongfenyangtijia.jpg",
+  image:"cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/洋紫荆插画.png",
   title: `宫粉羊蹄甲`,
   content: `形态特征
     生活型：	落叶乔木；
@@ -75,9 +75,9 @@ Page({
       id: 1,
       latitude: '22.59163',
       longitude: '113.972654',
-      width: 50,
+      width: 80,
       height: 50,
-      iconPath: '/sources/img/zijing.png',
+      iconPath: 'cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/洋紫荆插画.png',
       callout: {
         content: "宫粉羊蹄甲",
         color: "#000",

@@ -1,0 +1,11 @@
+<!--pages/diyAvatar/diyAvatar.wxml-->
+<!-- <text>pages/diyAvatar/diyAvatar.wxml</text> -->
+<view class="avatar-page">
+  <!-- 占位view -->
+  <view style="height: 200rpx;"></view>
+  
+  <view class="ellipse_1">
+  </view>
+  <view class="ellipse_2">
+  </view>
+</view>
