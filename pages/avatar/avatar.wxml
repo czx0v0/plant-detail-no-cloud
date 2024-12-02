@@ -13,6 +13,12 @@
     <input type="nickname" class="weui-input" placeholder="请输入昵称" bindconfirm="onNicknameInput" wx:if="{{nicknameInputShow}}" />
     <view class="nickname" bind:tap="changeNickname"> 你好呀!{{nickname}}</view>
   </view>
+  <navigator url="/pages/diyAvatar/diyAvatar" open-type="switchTab">
+    <button class="toDiyAvatarFrame">
+  定制头像框
+  </button>
+  </navigator>
+
   <view class="ellipse_1">
   </view>
   <view class="ellipse_2">

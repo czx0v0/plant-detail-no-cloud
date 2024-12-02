@@ -91,3 +91,10 @@
   font-weight: 1000;
   align-self:center;
 }
+.toDiyAvatarFrame {
+  background: linear-gradient(to right, #7DF612, #DAFFAD);
+  border-radius: 8px;
+  height: 52px;
+  line-height: 45px;
+  margin-top: 200px;
+}

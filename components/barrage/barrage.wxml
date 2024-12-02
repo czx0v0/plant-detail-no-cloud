@@ -1,5 +1,4 @@
 <!--components/barrage/barrage.wxml-->
 <view class="barrage-container">
-<!-- <view class = "barrage" wx:for="{{emojiBarrage.emojiArray}}" wx:key="index" animation = "{{item.animationData}}">{{item.emojiText}}</view> -->
-<view class = "barrage" wx:for="{{emojiBarrage.emojiArray}}" wx:key="index" >{{item.emojiText}}</view>
+  <view class="barrage" wx:for="{{emojiBarrage.emojiArray}}" wx:key="index" style = "left:{{item.emojiLeft}}px; animation-delay:{{item.emojiDelay}}ms; --mid-x:{{item.emojiMidX}}%;--mid-rotate:{{item.emojiMidRotate}}deg; --end-x:{{item.emojiEndX}}%;">{{item.emojiText}}</view>
 </view>

@@ -11,7 +11,7 @@ Component({
         show: false,
         title: "title",
         content: "content",
-        image:"/sources/img/zijing.png"
+        image:"/sources/img/zijing.png",
       }
     }
   },
@@ -25,13 +25,20 @@ Component({
       emojiArray: [
         // {
         //   emojiText:"\u{1F62D}",
-        //   emojiDirection:1,
-        //   emojiTime:6,
-        //   animationData:{},
+        //   emojiLeft:100,
+        //   emojiDelay:2000,
+        //   emojiMidX:150,
+        //   emojiMidRotate:30,
+        //   emojiEndX:-100
         // }
       ]
     },
-    emojiShow:false,
+    emojiShow:true,
+    emojiListShowOn:false,
+    emojiCount:0,
+    emojiAdded:false,
+    heartCount:0,
+    hearAdded:false,
   },
 
   /**
@@ -48,27 +55,48 @@ Component({
       // 接收按钮的数据
       this.triggerEvent('backToMap');
     },
+    changeHeart:function(){
+      if(!this.data.heartAdded){
+        this.setData({
+          heartAdded:true,
+          heartCount:this.data.heartCount+1
+        })
+      }else{
+        this.setData({
+          heartAdded:false,
+          heartCount:this.data.heartCount-1
+        })
+      }
+      
+    },
     addEmoji: function (event) {
-      //设置每个弹幕的随机初始运动方向
-      const fallDirection = Math.random(1)>0.5?1:-1;//向左/向右
-      const fallTime = Math.random()*3;
-
-      var animation = wx.createAnimation({
-        duration: 10,
-        timingFunction: 'ease-in-out',
-        delay:0
+      this.setData({
+        emojiCount:this.data.emojiCount+1,
+        emojiAdded: true
       })
-      this.animation = animation
-      this.animation.translateX(0).translateY(0).step()
-
+      //设置每个弹幕的随机初始运动位置和延时
+      // 随机生成表情初始位置和下落延时
+      // 初始位置left值
+      const left = Math.random()*300;
+      // 动画延时
+      const fallDelay = Math.random()*3000;
+      // 中间位置X变化
+      const midX = Math.random()*500-250;
+      // 中间位置Rotate值
+      const midRotate = Math.random()*180;
+      // 终点位置X变化
+      const endX = Math.random()*500-250;
+      // 使用CSS动画代替
       // 接收按钮数据,显示新的表情
       this.triggerEvent('addEmoji')
       let emojiText = event.currentTarget.dataset.emoji;
       let emoji = {
         emojiText:emojiText,
-        emojiDirection:fallDirection,
-        emojiTime:fallTime,
-        animationData:this.animation.export(),
+        emojiLeft:left,
+        emojiDelay:fallDelay,
+        emojiMidX:midX,
+        emojiMidRotate:midRotate,
+        emojiEndX:endX,
       };
       console.log(emojiText)
       console.log(this.data.emojiDetail.emojiArray)
@@ -77,31 +105,37 @@ Component({
       })
     },
     emojiListShow:function(){
-      this.triggerEvent('emojiListShow')
-      console.log('emoji show')
-      if(this.data.emojiShow == false){
+      this.triggerEvent('emojiListShow');
+      console.log('emojiListShow');
+      if(this.data.emojiListShowOn == false){
         this.setData({
-          emojiShow:true
+          emojiListShowOn:true
         })
       }else{
         this.setData({
-          emojiShow:false
+          emojiListShowOn:false
         })
       }
 
     },
     resetData() {
-      this.setData({
-        'emojiDetail.emojiArray': [
-          {
-            emojiText:"\u{1F338}",
-            emojiDirection:1,
-            emojiTime:6,
-            animationData:{}
-          }
-         
-        ]
-      });
+      // this.setData({
+      //   'emojiDetail.emojiArray': [  
+      //   ]
+      // });
+    },
+    emojiShow:function(){
+      this.triggerEvent('emojiShow');
+      if(this.data.emojiShow){
+        this.setData({
+          emojiShow:false
+        })
+      }else{
+        this.setData({
+          emojiShow:true
+        })
+      }
+      
     }
   },
   onload: function () {

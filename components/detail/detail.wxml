@@ -1,45 +1,61 @@
 <!--components/detail/detail.wxml-->
-<view class="barrage-mask" wx:if="{{markerInfo.show}}">
+<view class="barrage-mask" wx:if="{{markerInfo.show&emojiShow}}">
   <barrage emojiBarrage="{{emojiDetail}}"></barrage>
 </view>
+
 <view class="detail-mask" wx:if="{{markerInfo.show}}">
-  <view class="detail-container">
+  <view class="emoji-show-toggle">
+    <image src="{{emojiShow?'../../sources/img/emojion.png':'../../sources/img/emojioff.png'}}"    mode="aspectFill" class="emoji-show-icon" bindtap="emojiShow" />
+  </view>
+<view class="detail-container">
   <view class="detail-back">
-  <image class="go-back" bindtap="backToMap" src="../../sources/img/back-x.png" mode="aspectFill">返回</image>
+    <image class="go-back" bindtap="backToMap" src="../../sources/img/back-x.png" mode="aspectFill">返回</image>
   </view>
-    <view class="detail-header">
-      <view class="header-left">
-        <view class="image-container">
-          <image class="detail-image" src="{{markerInfo.image}}" alt="the picture of the plant" mode="aspectFill" />
-        </view>
+  <view class="detail-header">
+    <view class="header-left">
+      <view class="image-container">
+        <image class="detail-image" src="{{markerInfo.image}}" alt="the picture of the plant" mode="aspectFill" />
       </view>
-      <view class="header-right">
-        <view class="header-right-top">
-          <text class="detail-title">{{markerInfo.title}}</text>
-        </view>
-        <view class="emoji-list" wx:if="{{emojiShow}}">
-            <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F60D;">&#x1F60D;</view>
-            <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F62D;">&#x1F62D;</view>
-            <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F338;">&#x1F338;</view>
-            <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F33B;">&#x1F33B;</view>
-            <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F620;">&#x1F620;</view>
-            <view class="add-emoji" bindtap="addEmoji" data-emoji="&#x1F340;">&#x1F340;</view>
+    </view>
+    <view class="header-right">
+      <view class="header-right-top">
+        <text class="detail-title">{{markerInfo.title}}</text>
+      </view>
+      <view class="emoji-list" wx:if="{{emojiListShowOn}}">
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="😭">😭</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="🍀">🍀</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="🥺">🥺</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="🤩">🤩</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="😎">😎</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="😍">😍</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="😠">😠</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="😉">😉</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="😢">😢</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="🎉">🎉</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="🐾">🐾</view>
+        <view class="add-emoji" bindtap="addEmoji" data-emoji="🙏">🙏</view>
+      </view>
+      <view class="header-right-bottom">
+        <view class="header-emoji-container">
+          <view class="header-emoji-count">
+            <text class="heart-count-number">{{emojiCount}}</text>
           </view>
-        <view class="header-right-bottom">       
-          <image class="header-emoji-icon" src="../../sources/img/SmileyHappy.png" bindtap="emojiListShow" mode="aspectFill" />
-          
-          <image class="header-like-icon" src="../../sources/img/Heart.png" mode="aspectFill" />
+          <image class="header-emoji-icon" src="{{emojiAdded?'../../sources/img/SmileyHappy_2.png':'../../sources/img/SmileyHappy.png'}}" bindtap="emojiListShow" mode="aspectFill" />
+        </view>
+        <view class="header-heart-container">
+          <view class="header-heart-count">
+            <text class="heart-count-number">{{heartCount}}</text>
+          </view>
+          <image class="header-like-icon" src="{{heartAdded?'../../sources/img/Heart_2.png':'../../sources/img/Heart.png'}}" bindtap="changeHeart" mode="aspectFill" />
         </view>
       </view>
     </view>
-    <view class="detail-body">
-      <!-- <view class="image-container">
-      <image class = "detail-image" src="{{markerInfo.image}}" alt="the picture of the plant" mode="aspectFill"/>
-    </view> -->
-      <text class="detail-content">{{markerInfo.content}}</text>
-    </view>
-    <view class="detail-footer">
-      <button class="share-pic" bindtap="backToMap">分享</button>
-    </view>
   </view>
+  <view class="detail-body">
+    <text class="detail-content">{{markerInfo.content}}</text>
+  </view>
+  <view class="detail-footer">
+    <button class="share-pic" bindtap="backToMap">分享</button>
+  </view>
+</view>
 </view>
