@@ -1,0 +1,26 @@
+/* pages/plantCollection/plantCollection.wxss */
+.ellipse_1 {
+    height: 512rpx;
+    width: 512rpx;
+    z-index: 1;
+    position: absolute;
+    top: 107rpx;
+    left: -182rpx;
+    background: #8cf81f;
+    filter: blur(80rpx);
+    opacity: 35%;
+    border-radius: 50%;
+  }
+  
+  .ellipse_2 {
+    height: 622rpx;
+    width: 622rpx;
+    z-index: 1;
+    opacity: 35%;
+    left: 330rpx;
+    top: 250rpx;
+    position: absolute;
+    filter: blur(80rpx);
+    background: #ffd608;
+    border-radius: 50%;
+  }
