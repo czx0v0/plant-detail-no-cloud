@@ -7,6 +7,36 @@
     <image src="../../sources/img/arrow_left.png" mode="aspectFill" class="back-arrow" />
     <button plain class="go-back" bindtap="goBack">返回</button>
   </view>
+  <view class="canvas-container">
+    <canvas type='2d' canvas-id="avatarCanvas" id="avatarCanvas" class="avatar-canvas" ></canvas>
+  </view>
+  <view class="canvas-diy-container">
+  <view class="canvas-diy-tab">
+  <view class="diy-tab-outer">
+  <text>外框</text>
+  </view>
+  <view class="diy-tab-inner">内框</view>
+  <view class="diy-tab-corner">四角边框</view>
+  </view>
+  <view class="canvas-diy-choose-container">
+  </view>
+  </view>
+
+<view id = "outer" class="diy-list active">
+<view class="diy-frames">1</view>
+<view class="diy-frames">2</view>
+</view>
+<view id = "inner" class="diy-list">
+  <view class="diy-frames">3</view>
+  <view class="diy-frames">4</view>
+  </view>
+<view id = "corner" class="diy-list">
+  <view class="diy-frames">5</view>
+  <view class="diy-frames">6</view>
+</view>
+
+  <button class="save-avatar-pic" bindtap="saveAvatarPic">
+  <text>保存到手机</text></button>
   <view class="ellipse_1">
   </view>
   <view class="ellipse_2">
