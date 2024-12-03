@@ -2,15 +2,17 @@
 .avatar-page {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
-.avatar-canvas {
+.avatar-page .choose-avatar .avatar-canvas {
   width: 300rpx;
   height: 300rpx;
-  border-radius: 30%;
-  overflow: hidden;
-  margin: 0 auto;
-  z-index: 999;
+  /* border-radius: 30%; */
+  /* overflow: hidden; */
+  margin: 10px auto;
+  z-index: 1000;
 }
 
 .choose-avatar {
@@ -97,4 +99,11 @@
   height: 52px;
   line-height: 45px;
   margin-top: 200px;
+}
+.save-avatar-pic{
+  background: linear-gradient(to right, #ffd608, #fff);
+  border-radius: 8px;
+  height: 52px;
+  line-height: 45px;
+  margin-top: 10px;
 }

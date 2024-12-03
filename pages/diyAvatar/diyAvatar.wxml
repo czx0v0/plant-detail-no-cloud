@@ -3,7 +3,10 @@
 <view class="avatar-page">
   <!-- 占位view -->
   <view style="height: 200rpx;"></view>
-  
+  <view class="back-container" bindtap="goBack">
+    <image src="../../sources/img/arrow_left.png" mode="aspectFill" class="back-arrow" />
+    <button plain class="go-back" bindtap="goBack">返回</button>
+  </view>
   <view class="ellipse_1">
   </view>
   <view class="ellipse_2">

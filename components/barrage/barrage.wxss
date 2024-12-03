@@ -23,6 +23,6 @@
 }
 @keyframes animation-y{
   0%{transform:translateY(0vh) rotate(0deg);}
-  50%{transform:translateY(60vh) translateX(var(--mid-x)) rotate(var(--mid-rotate));}
+  50%{transform:translateY(65vh) translateX(var(--mid-x)) rotate(var(--mid-rotate));}
   100%{transform:translateY(120vh) translateX(var(--end-x)) rotate(360deg);}
 }

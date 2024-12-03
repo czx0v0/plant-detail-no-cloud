@@ -83,7 +83,7 @@ Component({
       // 中间位置X变化
       const midX = Math.random()*500-250;
       // 中间位置Rotate值
-      const midRotate = Math.random()*180;
+      const midRotate = Math.random()*300-150;
       // 终点位置X变化
       const endX = Math.random()*500-250;
       // 使用CSS动画代替

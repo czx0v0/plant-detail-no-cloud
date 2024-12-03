@@ -9,6 +9,7 @@ Page({
     nickname:'匿名',
     nicknameInputShow:true,
     avatarWrapperShow:true,
+    canvas:{}
   },
 
   /**
@@ -32,6 +33,7 @@ Page({
         const canvas = res[0].node; // 获取canvas节点
         console.log(res)
         const ctx = canvas.getContext('2d');
+        
         // 获取2d上下文
         const dpr = wx.getSystemInfoSync().pixelRatio; //获取设备的像素比
         // 设置canvas宽高（实际）
@@ -64,37 +66,41 @@ Page({
               );
               // 绘制头像框
               that.drawFrame(canvas, avatarWidth);
+              console.log('canvas complete');
+              
             }
           }
         });
+        that.data.canvas = canvas;
       })
+      
   },
   drawFrame(canvas, avatarWidth) {
-    const frameSize = avatarWidth * 0.3;
+    const frameSize = avatarWidth ;
     const ctx = canvas.getContext('2d');
     // 头像框的位置
     const framePosition = [{
         x: 0,
-        y: frameSize * 0.4
+        y: frameSize * 0
       },
-      {
-        x: avatarWidth - frameSize,
-        y: 0
-      },
-      {
-        x: 0,
-        y: avatarWidth - frameSize
-      },
-      {
-        x: avatarWidth - frameSize * 1.3,
-        y: avatarWidth - frameSize * 1.3
-      }
+      // {
+      //   x: avatarWidth - frameSize,
+      //   y: 0
+      // },
+      // {
+      //   x: 0,
+      //   y: avatarWidth - frameSize
+      // },
+      // {
+      //   x: avatarWidth - frameSize * 1.3,
+      //   y: avatarWidth - frameSize * 1.3
+      // }
     ];
     framePosition.forEach((pos, index) => {
       console.log(index);
       const frameImg = canvas.createImage()
       if (index == 0) {
-        frameImg.src = "../../sources/img/ava1.png";
+        frameImg.src = "../../sources/img/avatar_frame_out_2.png";
       } else if (index == 1) {
         frameImg.src = "../../sources/img/ava2.png";
       } else if (index == 2) {
@@ -169,6 +175,82 @@ Page({
         nicknameInputShow:true
       })
     }
+  },
+  navigateToDiy:function(){
+    this.triggerEvent('navigateToDiy');
+    wx.navigateTo({
+      url: '/pages/diyAvatar/diyAvatar',
+    });
+  },
+  saveAvatarPic:function(){
+    var that = this;
+    this.triggerEvent('saveAvatarPic');
+    // 把canvas转化成临时文件url
+    wx.canvasToTempFilePath({
+      // canvasId:'avatarCanvas',
+      canvas:that.data.canvas,
+      x:0,
+      y:0,
+      width:512,
+      height:512,
+      destHeight:100,
+      destWidth:100,
+      success:(res)=>{
+        const tempFilePath = res.tempFilePath;
+        console.log(tempFilePath);
+        //请求授权保存相册
+        wx.authorize({
+          scope: 'scope.writePhotosAlbum',
+          success:(res)=>{
+            wx.saveImageToPhotosAlbum({
+              filePath: tempFilePath,
+              success:(saveRes)=>{
+                console.log('save success')
+                wx.showToast({
+                  title: '保存成功！',
+                  icon:'success',
+                  duration:1000
+                });
+              },
+              fail:(err)=>{
+                console.log('save failed',err)
+                wx.showToast({
+                  title: '保存失败',
+                  icon:'none',
+                  duration:1000
+                });
+              }
+            });
+          },
+          fail:(resErr)=>{
+            console.log('auth failed',resErr);
+            wx.showModal({
+              title:'授权提示',
+              content:'需要获取保存图片权限',
+              showCancel:false,
+              confirmText:'设置',
+              success:(modalRes)=>{
+                if(modalRes.confirm){
+                  wx.openSetting({
+                    success:(setRes)=>{
+                      console.log('set')
+                    }
+                  });
+                }
+              }
+            });
+          }
+        });
+      },
+      fail:(err)=>{
+        console.log('canvas to file failed',err);
+        wx.showToast({
+          title: '头像转换失败',
+          icon:'none',
+          duration:1000
+        });
+      }
+    },this);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
