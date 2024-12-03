@@ -2,29 +2,33 @@
   "pages": [
     "pages/avatar/avatar",
     "pages/map/map",
-    "pages/detail/detail"
-    
+    "pages/detail/detail",
+    "pages/diyAvatar/diyAvatar"
   ],
   "window": {
     "navigationStyle": "custom",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "植物地图信息",
     "navigationBarBackgroundColor": "#cccccc",
-    "backgroundColor": "#eeeeee","backgroundTextStyle": "light",
-    "homeButton":true
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "homeButton": true
   },
   "tabBar": {
     "custom": false,
     "color": "#000",
     "selectedColor": "#www",
     "backgroundColor": "#fff",
-    "list": [{
-      "pagePath": "pages/map/map",
-      "text": "地图信息"
-    }, {
-      "pagePath": "pages/avatar/avatar",
-      "text": "头像"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/map/map",
+        "text": "地图信息"
+      },
+      {
+        "pagePath": "pages/avatar/avatar",
+        "text": "头像"
+      }
+    ]
   },
   "usingComponents": {},
   "style": "v2",
