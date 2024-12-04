@@ -43,8 +43,8 @@
   width: 512rpx;
   z-index: 1;
   position: absolute;
-  top: 80rpx;
-  right: 40vw;
+  top: 107rpx;
+  left: -182rpx;
   background: #8cf81f;
   filter: blur(80rpx);
   opacity: 35%;
@@ -56,8 +56,8 @@
   width: 622rpx;
   z-index: 1;
   opacity: 35%;
-  left: 50vw;
-  top: 333rpx;
+  left: 330rpx;
+  top: 250rpx;
   position: absolute;
   filter: blur(80rpx);
   background: #ffd608;
