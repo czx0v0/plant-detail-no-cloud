@@ -8,35 +8,36 @@
     <button plain class="go-back" bindtap="goBack">返回</button>
   </view>
   <view class="canvas-container">
-    <canvas type='2d' canvas-id="avatarCanvas" id="avatarCanvas" class="avatar-canvas" ></canvas>
+    <canvas type='2d' canvas-id="avatarCanvas" id="avatarCanvas" class="avatar-canvas"></canvas>
   </view>
   <view class="canvas-diy-container">
-  <view class="canvas-diy-tab">
-  <view class="diy-tab-outer">
-  <text>外框</text>
-  </view>
-  <view class="diy-tab-inner">内框</view>
-  <view class="diy-tab-corner">四角边框</view>
-  </view>
-  <view class="canvas-diy-choose-container">
-  </view>
+    <view class="canvas-diy-tab">
+      <view class="diy-tab-outer {{diyType == 'outer'?'active':''}}" data-diy="outer" bind:tap="switchDiyTab">
+        <text>外框</text>
+      </view>
+      <view class="diy-tab-inner {{diyType == 'inner'?'active':''}}" data-diy="inner" bind:tap="switchDiyTab"><text>内框</text></view>
+      <view class="diy-tab-corner {{diyType == 'corner'?'active':''}}" data-diy="corner" bind:tap="switchDiyTab"><text>四角边框</text></view>
+    </view>
   </view>
 
-<view id = "outer" class="diy-list active">
-<view class="diy-frames">1</view>
-<view class="diy-frames">2</view>
-</view>
-<view id = "inner" class="diy-list">
-  <view class="diy-frames">3</view>
-  <view class="diy-frames">4</view>
+  <view id="outer" class="diy-list" wx:if="{{diyType=='outer'?true:false}}">
+    <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{outerFrames}}" wx:key="frameId" bind:tap="switchOuterFrame">
+      <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill"/>
+    </view>
   </view>
-<view id = "corner" class="diy-list">
-  <view class="diy-frames">5</view>
-  <view class="diy-frames">6</view>
-</view>
+  <view id="inner" class="diy-list" wx:if="{{diyType=='inner'?true:false}}">
+    <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{innerFrames}}" wx:key="frameId" bind:tap="switchInnerFrame">
+      <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill"/>
+    </view>
+  </view>
+  <view id="corner" class="diy-list" wx:if="{{diyType=='corner'?true:false}}">
+    <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{cornerFrames}}" wx:key="frameId" bind:tap="switchCornerFrame">
+      <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill"/>
+    </view>
+  </view>
 
   <button class="save-avatar-pic" bindtap="saveAvatarPic">
-  <text>保存到手机</text></button>
+    <text>保存到手机</text></button>
   <view class="ellipse_1">
   </view>
   <view class="ellipse_2">
