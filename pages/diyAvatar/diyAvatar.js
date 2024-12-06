@@ -420,9 +420,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-    this.loadAvatar(); //检查本地头像加载
-    this.loadAvatarFrame();
-    this.drawAvatarFrame(); //绘制头像和头像框
   },
 
   /**
