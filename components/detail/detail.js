@@ -108,7 +108,7 @@ Component({
       })
 
       //发送表情后点亮图标
-      this.lightPlant();
+      // this.lightPlant();
 
     },
     emojiListShow:function(){
@@ -157,7 +157,7 @@ Component({
         this.setData({
           lightCompleted:true,
         });
-      },1000)
+      },3000)
       this.setData({
         isLighted:true
       })

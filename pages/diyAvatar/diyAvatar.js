@@ -65,7 +65,7 @@ Page({
           },
           {
             frameId: '14',
-            frameSrc: './../sources/img/avatar_frame_out_4.png',
+            frameSrc: '../../sources/img/avatar_frame_out_4.png',
             isLocked: false
           },
         ],

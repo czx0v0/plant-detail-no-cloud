@@ -7,7 +7,7 @@
   <view class="light-plant-show-container" wx:if="{{lightPlantShow}}">
     <image src="../../sources/img/洋紫荆插画.png" class="light-plant-image {{lightCompleted == true?'':'load-img'}}" mode="aspectFill"/>
     <view wx:if="{{!lightCompleted}}" class="light-plant-text">
-      <text>点亮中</text>
+      <text>位置校验中</text>
     </view>
     <view wx:if="{{lightCompleted}}">
       <text>已点亮！</text>
