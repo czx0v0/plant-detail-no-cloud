@@ -131,8 +131,8 @@ Page({
             // ctx.fillRect(0,0,10,10)
             //绘制头像
             const avatarWidth = res[0].width; // 头像的宽
-            const avatarSize = avatarWidth * 0.8; // 头像尺寸
-            const avatarOffset = avatarWidth * 0.1; // 边距
+            const avatarSize = avatarWidth * 0.9; // 头像尺寸
+            const avatarOffset = avatarWidth * 0.05; // 边距
             const avatarImg = canvas.createImage(); //头像图像
             // 从链接获取头像图像信息
             wx.getImageInfo({
@@ -166,14 +166,14 @@ Page({
         var that = this;
         // 绘制内框
         if (this.data.innerFrameUrl != '') {
-          const frameSize = avatarWidth * 0.8;
+          const frameSize = avatarWidth * 0.9;
           const ctx = canvas.getContext('2d');
           ctx.save();
           ctx.globalCompositeOperation = 'source-over';
           // 头像框的位置
           const framePosition = [{
-            x: avatarWidth * 0.1,
-            y: avatarWidth * 0.1
+            x: avatarWidth * 0.05,
+            y: avatarWidth * 0.05
           }, ];
           framePosition.forEach((pos, index) => {
             console.log(index);
