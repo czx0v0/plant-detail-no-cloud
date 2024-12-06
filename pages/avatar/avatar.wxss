@@ -4,6 +4,8 @@
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatar-page .choose-avatar .avatar-canvas {
@@ -99,6 +101,9 @@
   height: 52px;
   line-height: 45px;
   margin-top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .save-avatar-pic{
   background: linear-gradient(to right, #ffd608, #fff);
@@ -106,4 +111,7 @@
   height: 52px;
   line-height: 45px;
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

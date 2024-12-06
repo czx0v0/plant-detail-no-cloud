@@ -20,21 +20,36 @@
     </view>
   </view>
 
-  <view id="outer" class="diy-list" wx:if="{{diyType=='outer'?true:false}}">
-    <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{outerFrames}}" wx:key="frameId" bind:tap="switchOuterFrame">
-      <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill"/>
+  <view class="diy-list">
+    <view id="outer" class="diy-list" wx:if="{{diyType=='outer'?true:false}}">
+      <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{outerFrames}}" wx:key="frameId" bind:tap="switchOuterFrame" wx:if="{{item.isLocked}}">
+        <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill" />
+      </view>
+      <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{outerFrames}}" wx:key="frameId" wx:if="{{!item.isLocked}}">
+        <image src="../../sources/img/Lock.png" mode="aspectFill" class="lock-icon" />
+        <image class="frame-image lock-filter" src="{{item.frameSrc}}" mode="aspectFill" />
+      </view>
+    </view>
+    <view id="inner" class="diy-list" wx:if="{{diyType=='inner'?true:false}}">
+      <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{innerFrames}}" wx:key="frameId" bind:tap="switchInnerFrame" wx:if="{{item.isLocked}}">
+        <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill" />
+      </view>
+      <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{innerFrames}}" wx:key="frameId" wx:if="{{!item.isLocked}}">
+        <image src="../../sources/img/Lock.png" mode="aspectFill" class="lock-icon" />
+        <image class="frame-image lock-filter" src="{{item.frameSrc}}" mode="aspectFill" />
+      </view>
+    </view>
+    <view id="corner" class="diy-list" wx:if="{{diyType=='corner'?true:false}}">
+      <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{cornerFrames}}" wx:key="frameId" bind:tap="switchCornerFrame" wx:if="{{item.isLocked}}">
+        <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill" />
+      </view>
+      <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{cornerFrames}}" wx:key="frameId" wx:if="{{!item.isLocked}}">
+        <image src="../../sources/img/Lock.png" mode="aspectFill" class="lock-icon" />
+        <image class="frame-image lock-filter" src="{{item.frameSrc}}" mode="aspectFill" />
+      </view>
     </view>
   </view>
-  <view id="inner" class="diy-list" wx:if="{{diyType=='inner'?true:false}}">
-    <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{innerFrames}}" wx:key="frameId" bind:tap="switchInnerFrame">
-      <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill"/>
-    </view>
-  </view>
-  <view id="corner" class="diy-list" wx:if="{{diyType=='corner'?true:false}}">
-    <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{cornerFrames}}" wx:key="frameId" bind:tap="switchCornerFrame">
-      <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill"/>
-    </view>
-  </view>
+
 
   <button class="save-avatar-pic" bindtap="saveAvatarPic">
     <text>保存到手机</text></button>

@@ -55,7 +55,10 @@
     <text class="detail-content">{{markerInfo.content}}</text>
   </view>
   <view class="detail-footer">
-    <button class="share-pic" bindtap="backToMap">分享</button>
+    <button class="light-plant" bind:tap="lightPlant" wx:if="{{!isLighted}}">
+    <text>点亮</text></button>
+    <button class="light-plant" wx:if="{{isLighted}}">
+    <text>已点亮</text></button>
   </view>
 </view>
 </view>

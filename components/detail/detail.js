@@ -39,6 +39,7 @@ Component({
     emojiAdded:false,
     heartCount:0,
     hearAdded:false,
+    isLighted:false,
   },
 
   /**
@@ -136,7 +137,14 @@ Component({
         })
       }
       
-    }
+    },
+    lightPlant:function(){
+      this.triggerEvent('lightPlant')
+      console.log("light plant");
+      this.setData({
+        isLighted:true
+      })
+    },
   },
   onload: function () {
 

@@ -18,6 +18,7 @@ Page({
   onLoad(options) {
     this.loadNickname();//检查本地昵称加载
     this.loadAvatar(); //检查本地头像加载
+    this.loadAvatarFrame();
     this.drawAvatarFrame();//绘制头像和头像框
   },
   drawAvatarFrame() {
@@ -76,43 +77,103 @@ Page({
       
   },
   drawFrame(canvas, avatarWidth) {
-    const frameSize = avatarWidth ;
-    const ctx = canvas.getContext('2d');
-    // 头像框的位置
-    const framePosition = [{
+    var that = this;
+    // 绘制内框
+    if (this.data.innerFrameUrl != '') {
+      const frameSize = avatarWidth * 0.8;
+      const ctx = canvas.getContext('2d');
+      ctx.save();
+      ctx.globalCompositeOperation = 'source-over';
+      // 头像框的位置
+      const framePosition = [{
+        x: avatarWidth * 0.1,
+        y: avatarWidth * 0.1
+      }, ];
+      framePosition.forEach((pos, index) => {
+        console.log(index);
+        const frameImg = canvas.createImage()
+        if (index == 0) {
+          frameImg.src = this.data.innerFrameUrl;
+        }
+        frameImg.onload = () => {
+          ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
+        }
+      });
+      ctx.restore();
+    }
+    // 绘制外框
+    if (this.data.outerFrameUrl != '') {
+      const frameSize = avatarWidth;
+      const ctx = canvas.getContext('2d');
+      ctx.save();
+      ctx.globalCompositeOperation = 'source-over';
+
+      // 头像框的位置
+      const framePosition = [{
         x: 0,
-        y: frameSize * 0
-      },
-      // {
-      //   x: avatarWidth - frameSize,
-      //   y: 0
-      // },
-      // {
-      //   x: 0,
-      //   y: avatarWidth - frameSize
-      // },
-      // {
-      //   x: avatarWidth - frameSize * 1.3,
-      //   y: avatarWidth - frameSize * 1.3
-      // }
-    ];
-    framePosition.forEach((pos, index) => {
-      console.log(index);
-      const frameImg = canvas.createImage()
-      if (index == 0) {
-        frameImg.src = "../../sources/img/avatar_frame_out_2.png";
-      } else if (index == 1) {
-        frameImg.src = "../../sources/img/ava2.png";
-      } else if (index == 2) {
-        frameImg.src = "../../sources/img/ava3.png";
-      } else {
-        frameImg.src = "../../sources/img/ava4.png";
-      }
-      frameImg.onload = () => {
-        ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
-      }
+        y: 0
+      }];
+      framePosition.forEach((pos, index) => {
+        console.log(index);
+        const frameImg = canvas.createImage()
+        if (index == 0) {
+          frameImg.src = this.data.outerFrameUrl;
+        }
+        frameImg.onload = () => {
+          ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
+        }
+      });
+      ctx.restore();
+    }
+    // 绘制四角边框
+    if (this.data.cornerFrameUrl[0] != '' || this.data.cornerFrameUrl[1] != '' || this.data.cornerFrameUrl[2] != '' || this.data.cornerFrameUrl[3] != '') {
+      const frameSize = avatarWidth * 0.3;
+      const ctx = canvas.getContext('2d');
+      ctx.save();
+      ctx.globalCompositeOperation = 'source-over';
+      // 头像框的位置
+      const framePosition = [{
+          x: 5,
+          y: 0
+        },
+        {
+          x: 0,
+          y: avatarWidth - frameSize
+        },
+        {
+          x: avatarWidth - frameSize,
+          y: 0,
+        },
+        {
+          x: avatarWidth - frameSize,
+          y: avatarWidth - frameSize,
+        }
+      ];
+      framePosition.forEach((pos, index) => {
+        console.log(index);
+        console.log(pos);
+        const frameImg = canvas.createImage();
+
+        if (index == 0 && that.data.cornerFrameUrl[0].value) {
+          console.log(that.data.cornerFrameUrl[0].value)
+          frameImg.src = that.data.cornerFrameUrl[0].value;
+        } else if (index == 1 && that.data.cornerFrameUrl[1].value) {
+          console.log(that.data.cornerFrameUrl[1].value)
+          frameImg.src = that.data.cornerFrameUrl[1].value;
+        } else if (index == 2 && that.data.cornerFrameUrl[2].value) {
+          console.log(that.data.cornerFrameUrl[2].value)
+          frameImg.src = that.data.cornerFrameUrl[2].value;
+        } else if (index == 3 && that.data.cornerFrameUrl[3].value) {
+          console.log(that.data.cornerFrameUrl[3].value)
+          frameImg.src = that.data.cornerFrameUrl[3].value;
+        }
+        frameImg.onload = () => {
+          ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
+        }
     });
-  },
+  ctx.restore();
+}
+},
   onChooseAvatar(e) {
     //头像选择
     //（onGetUserInfo在新版本已不使用）
@@ -150,7 +211,10 @@ Page({
         nicknameInputShow:false
       });
     }else{
-      nickname='匿名'
+      this.setData({
+        nickname:'匿名'
+      })
+      
     }
   },
   loadAvatar(){
@@ -162,7 +226,42 @@ Page({
         avatarWrapperShow:false,
       });
     }else{
-      avatarUrl=defaultAvatarUrl
+      this.setData({
+        avatarUrl:defaultAvatarUrl,
+      });
+    }
+  },
+  loadAvatarFrame() {
+    //检查本地头像框
+    const outerFrameUrl = wx.getStorageSync('outerFrameUrl');
+    const innerFrameUrl = wx.getStorageSync('innerFrameUrl');
+    const cornerFrameUrl = wx.getStorageSync('cornerFrameUrl');
+    if (outerFrameUrl) {
+      this.setData({
+        outerFrameUrl,
+      });
+    } else {
+      this.setData({
+        outerFrameUrl: ''
+      })
+    }
+    if (innerFrameUrl) {
+      this.setData({
+        innerFrameUrl,
+      });
+    } else {
+      this.setData({
+        innerFrameUrl: ''
+      })
+    }
+    if (cornerFrameUrl) {
+      this.setData({
+        cornerFrameUrl,
+      });
+    } else {
+      this.setData({
+        cornerFrameUrl: ['', '', '', '']
+      })
     }
   },
   changeNickname(){
@@ -265,6 +364,7 @@ Page({
   onShow() {
     this.loadNickname();//检查本地昵称加载
     this.loadAvatar(); //检查本地头像加载
+    this.loadAvatarFrame();
     this.drawAvatarFrame();//绘制头像和头像框
   },
 
@@ -288,6 +388,7 @@ Page({
   onPullDownRefresh() {
     this.loadNickname();//检查本地昵称加载
     this.loadAvatar(); //检查本地头像加载
+    this.loadAvatarFrame();
     this.drawAvatarFrame();//绘制头像和头像框
   },
 
