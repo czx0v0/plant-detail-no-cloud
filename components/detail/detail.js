@@ -39,7 +39,9 @@ Component({
     emojiAdded:false,
     heartCount:0,
     hearAdded:false,
+    lightPlantShow:false,
     isLighted:false,
+    lightCompleted:false
   },
 
   /**
@@ -104,6 +106,10 @@ Component({
       this.setData({
         'emojiDetail.emojiArray': this.data.emojiDetail.emojiArray.concat(emoji)
       })
+
+      //发送表情后点亮图标
+      this.lightPlant();
+
     },
     emojiListShow:function(){
       this.triggerEvent('emojiListShow');
@@ -141,9 +147,27 @@ Component({
     lightPlant:function(){
       this.triggerEvent('lightPlant')
       console.log("light plant");
+      
+      this.setData({
+        lightPlantShow:true,
+        lightCompleted:false,
+      })
+
+      setTimeout(()=>{
+        this.setData({
+          lightCompleted:true,
+        });
+      },1000)
       this.setData({
         isLighted:true
       })
+    },
+    lightPlantNotShow:function(){
+      this.triggerEvent('lightPlantNotShow')
+      this.setData({
+        lightPlantShow:false
+      })
+      console.log(' light completed')
     },
   },
   onload: function () {

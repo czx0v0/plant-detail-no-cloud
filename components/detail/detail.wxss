@@ -12,6 +12,7 @@
   background-color: rgba(255, 255, 255, 0.7);
   z-index: 2;
   backdrop-filter: blur(5px);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
 }
 
 .detail-container {
@@ -205,4 +206,114 @@
 .emoji-show-icon {
   width: 35px;
   height: 35px;
+}
+
+.fire {
+  animation: fire-animation linear 1s infinite alternate;
+}
+
+
+.detail-mask .light-plant-show-container {
+  width: 80%;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 5px;
+  margin: 5px 5px;
+  z-index: 1005;
+}
+
+.detail-mask .light-plant-show-container .light-plant-image {
+  scale: 50%;
+}
+.load-img{
+  filter: grayscale(100%);
+  animation: load-animation linear 1s infinite alternate;
+}
+
+.light-plant-text {
+  animation: blink-animation  linear 1s infinite alternate;
+  font-size: 20px;
+}
+
+.light-plant-button {
+  background: linear-gradient(to right, #7DF612, #DAFFAD);
+  border-radius: 10px;
+  height: 40px;
+  width: 60px;
+  margin: 15px;
+  font-size: 20px;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@keyframes fire-animation {
+  0% {
+    opacity: 0.8;
+    transform: translateY(2px);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  40% {
+    opacity: 1;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+
+  60% {
+    opacity: 1;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: translateY(2px);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes load-animation {
+  0% {
+    opacity: 0.8;
+    transform: translateY(3px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: translateY(3px);
+  }
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
 }
