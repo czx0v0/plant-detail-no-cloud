@@ -21,7 +21,7 @@ const mapData = [
     id: 3,
     latitude: 22.59278522495686,
     longitude: 113.96888474121091,
-    title: '标记3',
+    title: '变叶木',
     iconPath: 'cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图标/变叶木.png',
     width: 30,
     height: 30
