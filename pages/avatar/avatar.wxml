@@ -4,20 +4,22 @@
   <!-- 头像框画布 -->
   <view class="choose-avatar">
     <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-      <view class="select-info" wx:if="{{avatarWrapperShow}}">请选择头像</view>
+      <!-- <view class="select-info" wx:if="{{avatarWrapperShow}}">请选择头像</view> -->
       <canvas type='2d' canvas-id="avatarCanvas" id="avatarCanvas" class="avatar-canvas"></canvas>
     </button>
   </view>
   <!-- 昵称 -->
   <view class="nickname-container">
     <input type="nickname" class="weui-input" placeholder="请输入昵称" bindconfirm="onNicknameInput" wx:if="{{nicknameInputShow}}" />
-    <view class="nickname" bind:tap="changeNickname"> 你好呀!{{nickname}}</view>
+    <view class="nickname" bind:tap="changeNickname"> {{nickname}}</view>
   </view>
+  <view class="history-container">
+  <image src="../../sources/img/history.png" mode="aspectFill" class="history-img"/><text class="history-text">查看历史记录</text></view>
   <button class="toDiyAvatarFrame" bindtap="navigateToDiy">
-    定制头像框
+  <text>定制头像框</text>
   </button>
-  <button class="save-avatar-pic" bindtap="saveAvatarPic">
-    保存头像
+  <button class="save-avatar-pic" >
+  <text>我的图鉴</text>
   </button>
   <view class="ellipse_1">
   </view>

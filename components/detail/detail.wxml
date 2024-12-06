@@ -4,58 +4,73 @@
 </view>
 
 <view class="detail-mask" wx:if="{{markerInfo.show}}">
+  <view class="light-plant-show-container" wx:if="{{lightPlantShow}}">
+    <image src="../../sources/img/洋紫荆插画.png" class="light-plant-image {{lightCompleted == true?'':'load-img'}}" mode="aspectFill"/>
+    <view wx:if="{{!lightCompleted}}" class="light-plant-text">
+      <text>位置校验中</text>
+    </view>
+    <view wx:if="{{lightCompleted}}">
+      <text>已点亮！</text>
+    </view>
+    <button wx:if="{{lightCompleted}}" bind:tap="lightPlantNotShow" class="light-plant-button">
+      <text>好的！</text>
+      </button>
+  </view>
   <view class="emoji-show-toggle">
-    <image src="{{emojiShow?'../../sources/img/emojion.png':'../../sources/img/emojioff.png'}}"    mode="aspectFill" class="emoji-show-icon" bindtap="emojiShow" />
+    <image src="{{emojiShow?'../../sources/img/emojion.png':'../../sources/img/emojioff.png'}}" mode="aspectFill" class="emoji-show-icon" bindtap="emojiShow" />
   </view>
-<view class="detail-container">
-  <view class="detail-back">
-    <image class="go-back" bindtap="backToMap" src="../../sources/img/back-x.png" mode="aspectFill">返回</image>
-  </view>
-  <view class="detail-header">
-    <view class="header-left">
-      <view class="image-container">
-        <image class="detail-image" src="{{markerInfo.image}}" alt="the picture of the plant" mode="aspectFill" />
-      </view>
+  <view class="detail-container">
+    <view class="detail-back">
+      <image class="go-back" bindtap="backToMap" src="../../sources/img/back-x.png" mode="aspectFill">返回</image>
     </view>
-    <view class="header-right">
-      <view class="header-right-top">
-        <text class="detail-title">{{markerInfo.title}}</text>
-      </view>
-      <view class="emoji-list" wx:if="{{emojiListShowOn}}">
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="😭">😭</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="🍀">🍀</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="🥺">🥺</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="🤩">🤩</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="😎">😎</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="😍">😍</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="😠">😠</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="😉">😉</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="😢">😢</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="🎉">🎉</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="🐾">🐾</view>
-        <view class="add-emoji" bindtap="addEmoji" data-emoji="🙏">🙏</view>
-      </view>
-      <view class="header-right-bottom">
-        <view class="header-emoji-container">
-          <view class="header-emoji-count">
-            <text class="heart-count-number">{{emojiCount}}</text>
-          </view>
-          <image class="header-emoji-icon" src="{{emojiAdded?'../../sources/img/SmileyHappy_2.png':'../../sources/img/SmileyHappy.png'}}" bindtap="emojiListShow" mode="aspectFill" />
-        </view>
-        <view class="header-heart-container">
-          <view class="header-heart-count">
-            <text class="heart-count-number">{{heartCount}}</text>
-          </view>
-          <image class="header-like-icon" src="{{heartAdded?'../../sources/img/Heart_2.png':'../../sources/img/Heart.png'}}" bindtap="changeHeart" mode="aspectFill" />
+    <view class="detail-header">
+      <view class="header-left">
+        <view class="image-container">
+          <image class="detail-image" src="{{markerInfo.image}}" alt="the picture of the plant" mode="aspectFill" />
         </view>
       </view>
+      <view class="header-right">
+        <view class="header-right-top">
+          <text class="detail-title">{{markerInfo.title}}</text>
+        </view>
+        <view class="emoji-list" wx:if="{{emojiListShowOn}}">
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="😭">😭</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="🍀">🍀</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="🥺">🥺</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="🤩">🤩</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="😎">😎</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="😍">😍</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="😠">😠</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="😉">😉</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="😢">😢</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="🎉">🎉</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="🐾">🐾</view>
+          <view class="add-emoji" bindtap="addEmoji" data-emoji="🙏">🙏</view>
+        </view>
+        <view class="header-right-bottom">
+          <view class="header-emoji-container">
+            <view class="header-emoji-count">
+              <text class="heart-count-number">{{emojiCount}}</text>
+            </view>
+            <image class="header-emoji-icon" src="{{emojiAdded?'../../sources/img/SmileyHappy_2.png':'../../sources/img/SmileyHappy.png'}}" bindtap="emojiListShow" mode="aspectFill" />
+          </view>
+          <view class="header-heart-container">
+            <view class="header-heart-count">
+              <text class="heart-count-number">{{heartCount}}</text>
+            </view>
+            <image class="header-like-icon" src="{{heartAdded?'../../sources/img/Heart_2.png':'../../sources/img/Heart.png'}}" bindtap="changeHeart" mode="aspectFill" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="detail-body">
+      <text class="detail-content">{{markerInfo.content}}</text>
+    </view>
+    <view class="detail-footer">
+      <button class="light-plant fire" bind:tap="lightPlant" wx:if="{{!isLighted}}">
+        <text>点亮</text></button>
+      <button class="light-plant" wx:if="{{isLighted}}">
+        <text>已点亮</text></button>
     </view>
   </view>
-  <view class="detail-body">
-    <text class="detail-content">{{markerInfo.content}}</text>
-  </view>
-  <view class="detail-footer">
-    <button class="share-pic" bindtap="backToMap">分享</button>
-  </view>
-</view>
 </view>

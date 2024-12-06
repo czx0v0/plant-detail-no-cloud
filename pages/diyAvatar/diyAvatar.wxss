@@ -1,4 +1,12 @@
 /* pages/diyAvatar/diyAvatar.wxss */
+.avatar-page {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
+}
 .ellipse_1 {
   height: 512rpx;
   width: 512rpx;
@@ -24,11 +32,12 @@
   background: #ffd608;
   border-radius: 50%;
 }
-
 .avatar-page .back-container .go-back {
   border: 0;
-  font-size: 30px;
+  font-size: 25px;
   z-index: 1000;
+  padding: 0;
+  margin: 0;
 }
 
 .avatar-page .back-container {
@@ -37,18 +46,18 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 55px;
+  top: 6vh;
   left: 5px;
   padding: 2px;
   margin: 2px;
-  width: 130px;
-  height: 35px;
+  width: 100px;
+  height: 30px;
   z-index: 1000;
 }
 
 .avatar-page .back-container .back-arrow {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 .save-avatar-pic {
@@ -59,7 +68,7 @@
   line-height: 52px;
   font-size: 16px;
   width: 327px;
-  margin-top: 10px;
+  margin-top: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,23 +86,35 @@
 .canvas-diy-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  align-self: start;
+  justify-content: center;
+  padding-left: 30px;
+  margin: 5px 0;
+  z-index: 1001;
 }
 
 .avatar-page .canvas-diy-tab {
   display: flex;
   flex-direction: row;
-  margin: 30px;
-  font-size: 25px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 10px;
+  font-size: 20px;
   color: #083517;
+  z-index: 1001;
 }
 
 .avatar-page .canvas-diy-container .canvas-diy-tab .diy-tab-outer {
-  padding: 10px;
-  margin-right: 15px;
+  padding: 10px 10px;
   width: 60px;
-  height: 40px;
+  height: 30px;
+  z-index: 999;
   text-align: center;
-  line-height: 40px;
+  line-height: 30px;
+
+}
+.active{
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blue(5px);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
@@ -101,38 +122,42 @@
 }
 
 .avatar-page .canvas-diy-tab .diy-tab-inner {
-  padding: 10px;
-  margin-right: 10px;
+  padding: 5px 10px;
+  /* margin-right: 5px; */
   width: 60px;
-  height: 40px;
+  height: 30px;
+  z-index: 999;
   text-align: center;
-  line-height: 40px;
+  line-height: 30px;
 }
 
 .avatar-page .canvas-diy-tab .diy-tab-corner {
-  padding: 10px;
+  padding: 5px 10px;
   width: 100px;
-  height: 40px;
+  height: 30px;
   z-index: 999;
   text-align: center;
-  line-height: 40px;
+  line-height: 30px;
 }
 
 .diy-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 10px 30px;
-  overflow-x: scroll;
+  padding: 3vw 3vw;
+  overflow-y: scroll;
   align-items: center;
-  justify-content: flex-start;
+  justify-self: center;
+  justify-content:flex-start;
+  height: 28vh;
+
 }
 
 .diy-frames {
-  width: 92px;
-  height: 92px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  width: 23vw;
+  height: 23vw;
+  padding: 2px;
+  margin: 5px 8px;
   border-radius: 11px;
   display: flex;
   align-items: center;
@@ -140,4 +165,19 @@
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blue(5px);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+.frame-image{
+  width: 20vw;
+  height: 20vw;
+  z-index: 1002;
+}
+.lock-filter{
+  filter: grayscale(100%);
+}
+.lock-icon{
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  z-index: 1005;
 }

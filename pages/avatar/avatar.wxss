@@ -4,6 +4,8 @@
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatar-page .choose-avatar .avatar-canvas {
@@ -78,32 +80,59 @@
   padding: 10px 10px;
   color: #666;
 }
-.nickname-container{
+
+.nickname-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.nickname{
+
+.nickname {
   z-index: 999;
   margin: 10px 30px;
   padding: 10px 30px;
   font-size: 32px;
   color: #083517;
   font-weight: 1000;
-  align-self:center;
+  align-self: center;
 }
+
 .toDiyAvatarFrame {
   background: linear-gradient(to right, #7DF612, #DAFFAD);
   border-radius: 8px;
   height: 52px;
   line-height: 45px;
-  margin-top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.save-avatar-pic{
+
+.save-avatar-pic {
   background: linear-gradient(to right, #ffd608, #fff);
   border-radius: 8px;
   height: 52px;
   line-height: 45px;
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-container {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  margin-top: 28vh;
+  padding: 1%;
+}
+
+.history-img {
+  width: 20px;
+  height: 20px;
+}
+
+.history-text {
+  font-size: 15px;
+  color: #B6B6B6;
 }
