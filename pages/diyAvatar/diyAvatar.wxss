@@ -74,11 +74,20 @@
   justify-content: center;
 }
 
+.avatar-page .canvas-container{
+  width: 300rpx;
+  height: 300rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1000;
+}
+
 .avatar-page .avatar-canvas {
   width: 300rpx;
   height: 300rpx;
-  /* border-radius: 30%; */
-  /* overflow: hidden; */
+  overflow: hidden;
   margin: 10px auto;
   z-index: 1000;
 }
@@ -133,7 +142,7 @@
 
 .avatar-page .canvas-diy-tab .diy-tab-corner {
   padding: 5px 10px;
-  width: 100px;
+  width: 60px;
   height: 30px;
   z-index: 999;
   text-align: center;
@@ -162,14 +171,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blue(5px);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   position: relative;
+  overflow: hidden;
+}
+.frame-on{
+  box-shadow: 3px 3px 12px #2fbc00;
 }
 .frame-image{
   width: 20vw;
   height: 20vw;
+  z-index: 1002;
+}
+.frame-image-corner{
+  width: 15vw;
+  /* height:auto; */
   z-index: 1002;
 }
 .lock-filter{

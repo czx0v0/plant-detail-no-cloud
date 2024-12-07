@@ -73,6 +73,8 @@
   border-top: 1px solid #999;
   border-radius: 20px;
   z-index: 999;
+  position: absolute;
+  top:60vh;
 }
 
 .select-info {

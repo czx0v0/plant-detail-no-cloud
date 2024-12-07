@@ -45,8 +45,8 @@ Page({
         // ctx.fillRect(0,0,10,10)
         //绘制头像
         const avatarWidth = res[0].width; // 头像的宽
-        const avatarSize = avatarWidth * 0.9; // 头像尺寸
-        const avatarOffset = avatarWidth * 0.05; // 边距
+        const avatarSize = avatarWidth * 1; // 头像尺寸
+        const avatarOffset = avatarWidth * 0; // 边距
         const avatarImg = canvas.createImage(); //头像图像
         // 从链接获取头像图像信息
         wx.getImageInfo({
@@ -80,14 +80,14 @@ Page({
     var that = this;
     // 绘制内框
     if (this.data.innerFrameUrl != '') {
-      const frameSize = avatarWidth * 0.9;
+      const frameSize = avatarWidth * 0.8;
       const ctx = canvas.getContext('2d');
       ctx.save();
       ctx.globalCompositeOperation = 'source-over';
       // 头像框的位置
       const framePosition = [{
-        x: avatarWidth * 0.05,
-        y: avatarWidth * 0.05
+        x: avatarWidth * 0.1,
+        y: avatarWidth * 0.1
       }, ];
       framePosition.forEach((pos, index) => {
         console.log(index);
@@ -127,48 +127,63 @@ Page({
     }
     // 绘制四角边框
     if (this.data.cornerFrameUrl[0] != '' || this.data.cornerFrameUrl[1] != '' || this.data.cornerFrameUrl[2] != '' || this.data.cornerFrameUrl[3] != '') {
-      const frameSize = avatarWidth * 0.3;
+      const frameSize = avatarWidth * 0.2;
       const ctx = canvas.getContext('2d');
       ctx.save();
       ctx.globalCompositeOperation = 'source-over';
       // 头像框的位置
       const framePosition = [{
           x: 5,
-          y: 0
+          y: 5
         },
         {
           x: 0,
-          y: avatarWidth - frameSize
+          y: avatarWidth - frameSize-5
         },
         {
-          x: avatarWidth - frameSize,
-          y: 0,
+          x: avatarWidth - frameSize-5,
+          y: 5,
         },
         {
-          x: avatarWidth - frameSize,
-          y: avatarWidth - frameSize,
+          x: avatarWidth - frameSize-5,
+          y: avatarWidth - frameSize-5,
         }
       ];
       framePosition.forEach((pos, index) => {
         console.log(index);
         console.log(pos);
         const frameImg = canvas.createImage();
-
+        let imgSrc = '';
         if (index == 0 && that.data.cornerFrameUrl[0].value) {
           console.log(that.data.cornerFrameUrl[0].value)
           frameImg.src = that.data.cornerFrameUrl[0].value;
+          imgSrc = that.data.cornerFrameUrl[0].value;
         } else if (index == 1 && that.data.cornerFrameUrl[1].value) {
           console.log(that.data.cornerFrameUrl[1].value)
           frameImg.src = that.data.cornerFrameUrl[1].value;
+          imgSrc = that.data.cornerFrameUrl[1].value;
         } else if (index == 2 && that.data.cornerFrameUrl[2].value) {
           console.log(that.data.cornerFrameUrl[2].value)
           frameImg.src = that.data.cornerFrameUrl[2].value;
+          imgSrc = that.data.cornerFrameUrl[2].value;
         } else if (index == 3 && that.data.cornerFrameUrl[3].value) {
           console.log(that.data.cornerFrameUrl[3].value)
           frameImg.src = that.data.cornerFrameUrl[3].value;
+          imgSrc = that.data.cornerFrameUrl[3].value;
         }
+        wx.getImageInfo({
+          src:imgSrc,
+          success:function(res){
+            console.log("get info success")
+            let imgWidth = res.width
+            let imgHeight = res.height
+            // 宽高比
+            that.data.scaleWH = imgWidth/imgHeight
+          }
+        })
+        console.log("scale:",that.data.scaleWH)
         frameImg.onload = () => {
-          ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
+          ctx.drawImage(frameImg, pos.x-frameSize*that.data.scaleWH+frameSize, pos.y, frameSize*that.data.scaleWH, frameSize);
         }
     });
   ctx.restore();
