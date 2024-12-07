@@ -1,5 +1,177 @@
 /* pages/plantSearchResult/plantSearchResult.wxss */
 
+
+.image-container {
+    position:absolute;
+    top:284rpx;
+    left:132rpx;
+    width: 476rpx;  /* 设置容器宽度 */
+    height: 476rpx; /* 设置容器高度 */
+    overflow: hidden; /* 隐藏超出容器的部分 */
+    border-radius: 50%; /* 使容器变成圆形 */
+    border: 1rpx solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0rpx 0rpx 10rpx 5rpx #2FBC00;
+    /* background-color:#2FBC00;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .circular-image {
+    width: 100%;  /* 图片宽度填充容器 */
+    height: 100%; /* 图片高度填充容器 */
+    object-fit: cover; /* 保持图片的宽高比，覆盖整个容器 */
+    background-color: transparent; /* 确保图片本身背景是透明的 */
+    z-index: 100;
+  }
+
+  .tips {
+      position:absolute;
+      top:800rpx;
+      left:220rpx;
+      z-index: 100;
+      font-size: 32rpx;
+      font-weight:semi-bold;
+  }
+
+.result-container {
+    position: absolute;
+    left:65rpx;
+    top:872rpx;
+    width:620rpx;
+    height:400rpx;
+  }
+  
+  .scroll-container {
+    /* 设置滚动区域的最大高度 */
+    max-height: 400rpx;  
+  }
+
+  .result-item {
+      position:relative;
+      flex-direction: column;
+      align-items: flex-start; /* 左对齐，或者你可以根据需求修改 */
+      /* width: 100%; */
+      height: 152rpx;
+      margin-bottom: 26rpx;
+      background-color: #ffffff;
+      border-radius: 28rpx;
+      border: 1rpx solid rgba(0, 0, 0, 0.5);
+      box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.5);
+  }
+  
+  .item-name {
+    position: relative;
+    left:50rpx;
+    top:50rpx;
+    font-size: 40rpx;
+    font-weight: semi-bold;
+    color:#083517;
+  }
+  
+  .most-likely-item {
+    position:relative;
+    display: flex;
+    flex-direction: column; /* 让子元素垂直排列 */
+    align-items: left;    /* 让子元素在交叉轴上居中（可选） */
+    justify-content: center; /* 让子元素在主轴上居中（可选） */
+    /* left:94rpx;
+    top:45rpx; */
+}
+
+  .item-score {
+    position: relative;
+    left:94rpx;
+    top:45rpx;
+    font-size: 22rpx;
+    color: #666;
+  }
+
+  .item-score0 {
+    position: relative;
+    left:200rpx;
+    top:-8rpx;
+    font-size: 22rpx;
+    color: #666;
+  }
+  .item-score0-most {
+    position: relative;
+    left:200rpx;
+    top:-8rpx;
+    font-size: 22rpx;
+    font-weight: semibold;  
+    color: #0A5C25;
+  }
+
+  .post-maker {
+      position:absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;  
+      top:32rpx;
+      left: 400rpx;
+      width:196rpx;
+      height:92rpx;
+      background: linear-gradient(to right, #FFF2C8, #FFD500);
+      border-radius: 16rpx;
+  }
+  .post-maker-word {
+    font-size: 24rpx;
+    font-weight:semi-bold;
+  }
+
+  .camera-again {
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    top:1300rpx;
+    left: 50rpx;
+    width:654rpx;
+    height:104rpx;
+    background: linear-gradient(to right, #DAFFAD, #7DF612);
+    border-radius: 16rpx;
+    z-index: 100;
+  }
+
+  .camera-again-word {
+    font-size: 28rpx;
+    font-weight:semi-bold;
+  }
+
+  .faketabbar {
+      position:absolute;
+      bottom: -190rpx;
+      left: 0rpx;
+      height: 190rpx;
+      width:750rpx;
+      padding-bottom: 20px;
+      /* background-color: red; */
+      display: flex;
+      justify-content: center;
+      align-items: center;  
+  }
+
+.avatar-unselected {
+    position:relative;
+    width:72rpx;
+    height:72rpx;
+    left:370rpx;
+}
+ 
+.homepage-unselected {
+    width:72rpx;
+    height:72rpx;
+}
+
+.add-unselected {
+    position:relative;
+    width:72rpx;
+    height:72rpx;
+    left:-370rpx;
+}
+
 .ellipse_1 {
     height: 512rpx;
     width: 512rpx;

@@ -43,7 +43,7 @@ Page({
           });
           console.log('识别结果:', processedResult);
           wx.navigateTo({
-            url: `/pages/plantSearchResult/plantSearchResult?resultList=${encodeURIComponent(JSON.stringify(this.data.resultList))}`,
+            url: `/pages/plantSearchResult/plantSearchResult?resultList=${encodeURIComponent(JSON.stringify(this.data.resultList))}&imagePath=${encodeURIComponent(JSON.stringify(this.data.imagePath))}`,
           });
         } else {
           console.error('没有识别到植物');

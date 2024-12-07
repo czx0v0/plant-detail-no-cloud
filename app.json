@@ -1,13 +1,13 @@
 {
     "pages": [
         "pages/plantSearch/plantSearch",
+        "pages/plantSearchResult/plantSearchResult",
         "pages/plantCollection/plantCollection",
         "pages/avatar/avatar",
         "pages/home/home",
         "pages/map/map",
         "pages/detail/detail",
-        "pages/diyAvatar/diyAvatar",
-        "pages/plantSearchResult/plantSearchResult"
+        "pages/diyAvatar/diyAvatar"
     ],
     "window": {
         "navigationStyle": "custom",
