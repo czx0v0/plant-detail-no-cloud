@@ -9,6 +9,7 @@
   </view>
   <view class="canvas-container">
     <canvas type='2d' canvas-id="avatarCanvas" id="avatarCanvas" class="avatar-canvas"></canvas>
+    <cover-view class="canvas-cover"></cover-view>
   </view>
   <view class="canvas-diy-container">
     <view class="canvas-diy-tab">
@@ -16,13 +17,13 @@
         <text>外框</text>
       </view>
       <view class="diy-tab-inner {{diyType == 'inner'?'active':''}}" data-diy="inner" bind:tap="switchDiyTab"><text>内框</text></view>
-      <view class="diy-tab-corner {{diyType == 'corner'?'active':''}}" data-diy="corner" bind:tap="switchDiyTab"><text>四角边框</text></view>
+      <view class="diy-tab-corner {{diyType == 'corner'?'active':''}}" data-diy="corner" bind:tap="switchDiyTab"><text>装饰</text></view>
     </view>
   </view>
 
   <view class="diy-list">
     <view id="outer" class="diy-list" wx:if="{{diyType=='outer'?true:false}}">
-      <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{outerFrames}}" wx:key="frameId" bind:tap="switchOuterFrame" wx:if="{{item.isLocked}}">
+      <view class="diy-frames {{chooseOutId == item.frameId?'frame-on':''}}" data-id="{{item.frameId}}" wx:for="{{outerFrames}}" wx:key="frameId" bind:tap="switchOuterFrame" wx:if="{{item.isLocked}}">
         <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill" />
       </view>
       <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{outerFrames}}" wx:key="frameId" wx:if="{{!item.isLocked}}">
@@ -31,7 +32,7 @@
       </view>
     </view>
     <view id="inner" class="diy-list" wx:if="{{diyType=='inner'?true:false}}">
-      <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{innerFrames}}" wx:key="frameId" bind:tap="switchInnerFrame" wx:if="{{item.isLocked}}">
+      <view class="diy-frames {{chooseInId == item.frameId?'frame-on':''}}" data-id="{{item.frameId}}" wx:for="{{innerFrames}}" wx:key="frameId" bind:tap="switchInnerFrame" wx:if="{{item.isLocked}}">
         <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill" />
       </view>
       <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{innerFrames}}" wx:key="frameId" wx:if="{{!item.isLocked}}">
@@ -40,12 +41,12 @@
       </view>
     </view>
     <view id="corner" class="diy-list" wx:if="{{diyType=='corner'?true:false}}">
-      <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{cornerFrames}}" wx:key="frameId" bind:tap="switchCornerFrame" wx:if="{{item.isLocked}}">
-        <image class="frame-image" src="{{item.frameSrc}}" mode="aspectFill" />
+      <view class="diy-frames {{chooseCornerId == item.frameId?'frame-on':''}}" data-id="{{item.frameId}}" wx:for="{{cornerFrames}}" wx:key="frameId" bind:tap="switchCornerFrame" wx:if="{{item.isLocked}}">
+        <image class="frame-image-corner" src="{{item.frameSrc}}" mode="aspectFit" />
       </view>
       <view class="diy-frames" data-id="{{item.frameId}}" wx:for="{{cornerFrames}}" wx:key="frameId" wx:if="{{!item.isLocked}}">
         <image src="../../sources/img/Lock.png" mode="aspectFill" class="lock-icon" />
-        <image class="frame-image lock-filter" src="{{item.frameSrc}}" mode="aspectFill" />
+        <image class="frame-image-corner lock-filter" src="{{item.frameSrc}}" mode="aspectFit" />
       </view>
     </view>
   </view>

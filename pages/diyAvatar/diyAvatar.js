@@ -8,9 +8,13 @@ Page({
       data: {
         avatarUrl: defaultAvatarUrl,
         canvas: {},
+        scaleWH: 1,
         diyType: 'outer',
         outerFrameUrl: '',
         innerFrameUrl: '',
+        chooseOutId:0,
+        chooseInId:0,
+        chooseCornerId:0,
         cornerFrameUrl: ['', '', '', ''],
         outerFrames: [{
             frameId: '0',
@@ -19,28 +23,57 @@ Page({
           },
           {
             frameId: '1',
-            frameSrc: '../../sources/img/avatar_frame_out_1.png',
+            frameSrc: '../../sources/img/外框/紫荆花-外框.png',
             isLocked: true
           },
           {
             frameId: '2',
-            frameSrc: '../../sources/img/avatar_frame_out_2.png',
+            frameSrc: '../../sources/img/外框/鸢尾-外框.png',
             isLocked: true
           },
           {
             frameId: '3',
-            frameSrc: '../../sources/img/avatar_frame_out_3.png',
+            frameSrc: '../../sources/img/外框/三角梅-外框.png',
             isLocked: true
           },
           {
             frameId: '4',
-            frameSrc: '../../sources/img/avatar_frame_out_5.png',
+            frameSrc: '../../sources/img/外框/铁树-外框.png',
             isLocked: true
           },
           {
             frameId: '5',
-            frameSrc: '../../sources/img/avatar_frame_out_4.png',
-            isLocked: false
+            frameSrc: '../../sources/img/外框/芒萁-外框.png',
+            isLocked: true
+          },
+          {
+            frameId: '6',
+            frameSrc: '../../sources/img/外框/霸王棕-外框.png',
+            isLocked: true
+          },{
+            frameId: '7',
+            frameSrc: '../../sources/img/外框/龙船花-外框.png',
+            isLocked: true
+          },{
+            frameId: '8',
+            frameSrc: '../../sources/img/外框/竹子-外框.png',
+            isLocked: true
+          },{
+            frameId: '9',
+            frameSrc: '../../sources/img/外框/滴水观音-外框.png',
+            isLocked: true
+          },{
+            frameId: '10',
+            frameSrc: '../../sources/img/外框/变叶木-外框.png',
+            isLocked: true
+          },{
+            frameId: '11',
+            frameSrc: '../../sources/img/外框/南美蟛蜞菊-外框.png',
+            isLocked: true
+          },{
+            frameId: '12',
+            frameSrc: '../../sources/img/外框/华南毛蕨-外框.png',
+            isLocked: true
           },
         ],
         innerFrames: [{
@@ -50,23 +83,23 @@ Page({
           },
           {
             frameId: '11',
-            frameSrc: '../../sources/img/avatar_frame_out_1.png',
+            frameSrc: '../../sources/img/内框/内框-1.png',
             isLocked: true
           },
           {
             frameId: '12',
-            frameSrc: '../../sources/img/avatar_frame_out_5.png',
+            frameSrc: '../../sources/img/内框/内框-2.png',
             isLocked: true
           },
           {
             frameId: '13',
-            frameSrc: '../../sources/img/avatar_frame_out_3.png',
+            frameSrc: '../../sources/img/内框/内框-3.png',
             isLocked: true
           },
           {
             frameId: '14',
-            frameSrc: '../../sources/img/avatar_frame_out_4.png',
-            isLocked: false
+            frameSrc: '../../sources/img/内框/内框-4.png',
+            isLocked: true
           },
         ],
         cornerFrames: [
@@ -77,24 +110,29 @@ Page({
             isLocked: true
           },
           {
-            frameId: '101',
-            frameSrc: '../../sources/img/ava1.png',
+            frameId: '121',
+            frameSrc: '../../sources/img/装饰/装饰-1-二校门.png',
             isLocked: true
           },
           {
-            frameId: '112',
-            frameSrc: '../../sources/img/ava2.png',
+            frameId: '122',
+            frameSrc: '../../sources/img/装饰/装饰-2.png',
             isLocked: true
           },
           {
             frameId: '123',
-            frameSrc: '../../sources/img/ava3.png',
+            frameSrc: '../../sources/img/装饰/装饰-3.png',
             isLocked: true
           },
           {
-            frameId: '134',
-            frameSrc: '../../sources/img/ava4.png',
-            isLocked: false
+            frameId: '124',
+            frameSrc: '../../sources/img/装饰/装饰-4.png',
+            isLocked: true
+          },
+          {
+            frameId: '125',
+            frameSrc: '../../sources/img/装饰/装饰-5.png',
+            isLocked: true
           },
         ],
       },
@@ -131,8 +169,8 @@ Page({
             // ctx.fillRect(0,0,10,10)
             //绘制头像
             const avatarWidth = res[0].width; // 头像的宽
-            const avatarSize = avatarWidth * 0.9; // 头像尺寸
-            const avatarOffset = avatarWidth * 0.05; // 边距
+            const avatarSize = avatarWidth * 1; // 头像尺寸
+            const avatarOffset = avatarWidth * 0; // 边距
             const avatarImg = canvas.createImage(); //头像图像
             // 从链接获取头像图像信息
             wx.getImageInfo({
@@ -166,14 +204,14 @@ Page({
         var that = this;
         // 绘制内框
         if (this.data.innerFrameUrl != '') {
-          const frameSize = avatarWidth * 0.9;
+          const frameSize = avatarWidth * 0.8;
           const ctx = canvas.getContext('2d');
           ctx.save();
           ctx.globalCompositeOperation = 'source-over';
           // 头像框的位置
           const framePosition = [{
-            x: avatarWidth * 0.05,
-            y: avatarWidth * 0.05
+            x: avatarWidth * 0.1,
+            y: avatarWidth * 0.1
           }, ];
           framePosition.forEach((pos, index) => {
             console.log(index);
@@ -213,48 +251,63 @@ Page({
         }
         // 绘制四角边框
         if (this.data.cornerFrameUrl[0] != '' || this.data.cornerFrameUrl[1] != '' || this.data.cornerFrameUrl[2] != '' || this.data.cornerFrameUrl[3] != '') {
-          const frameSize = avatarWidth * 0.3;
+          const frameSize = avatarWidth * 0.2;
           const ctx = canvas.getContext('2d');
           ctx.save();
           ctx.globalCompositeOperation = 'source-over';
           // 头像框的位置
           const framePosition = [{
               x: 5,
-              y: 0
+              y: 5
             },
             {
               x: 0,
-              y: avatarWidth - frameSize
+              y: avatarWidth - frameSize-5
             },
             {
-              x: avatarWidth - frameSize,
-              y: 0,
+              x: avatarWidth - frameSize-5,
+              y: 5,
             },
             {
-              x: avatarWidth - frameSize,
-              y: avatarWidth - frameSize,
+              x: avatarWidth - frameSize-5,
+              y: avatarWidth - frameSize-5,
             }
           ];
           framePosition.forEach((pos, index) => {
             console.log(index);
             console.log(pos);
             const frameImg = canvas.createImage();
-
+            let imgSrc = '';
             if (index == 0 && that.data.cornerFrameUrl[0].value) {
               console.log(that.data.cornerFrameUrl[0].value)
               frameImg.src = that.data.cornerFrameUrl[0].value;
+              imgSrc = that.data.cornerFrameUrl[0].value;
             } else if (index == 1 && that.data.cornerFrameUrl[1].value) {
               console.log(that.data.cornerFrameUrl[1].value)
               frameImg.src = that.data.cornerFrameUrl[1].value;
+              imgSrc = that.data.cornerFrameUrl[1].value;
             } else if (index == 2 && that.data.cornerFrameUrl[2].value) {
               console.log(that.data.cornerFrameUrl[2].value)
               frameImg.src = that.data.cornerFrameUrl[2].value;
+              imgSrc = that.data.cornerFrameUrl[2].value;
             } else if (index == 3 && that.data.cornerFrameUrl[3].value) {
               console.log(that.data.cornerFrameUrl[3].value)
               frameImg.src = that.data.cornerFrameUrl[3].value;
+              imgSrc = that.data.cornerFrameUrl[3].value;
             }
+            wx.getImageInfo({
+              src:imgSrc,
+              success:function(res){
+                console.log("get info success")
+                let imgWidth = res.width
+                let imgHeight = res.height
+                // 宽高比
+                that.data.scaleWH = imgWidth/imgHeight
+              }
+            })
+            console.log("scale:",that.data.scaleWH)
             frameImg.onload = () => {
-              ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
+              ctx.drawImage(frameImg, pos.x-frameSize*that.data.scaleWH+frameSize, pos.y, frameSize*that.data.scaleWH, frameSize);
             }
         });
       ctx.restore();
@@ -276,33 +329,42 @@ Page({
   loadAvatarFrame() {
     //检查本地头像框
     const outerFrameUrl = wx.getStorageSync('outerFrameUrl');
+    const chooseOutId = wx.getStorageSync('chooseOutId');
     const innerFrameUrl = wx.getStorageSync('innerFrameUrl');
+    const chooseInId = wx.getStorageSync('chooseInId');
     const cornerFrameUrl = wx.getStorageSync('cornerFrameUrl');
+    const chooseCornerId = wx.getStorageSync('chooseCornerId');
     if (outerFrameUrl) {
       this.setData({
         outerFrameUrl,
+        chooseOutId
       });
     } else {
       this.setData({
-        outerFrameUrl: ''
+        outerFrameUrl: '',
+        chooseOutId:0
       })
     }
     if (innerFrameUrl) {
       this.setData({
         innerFrameUrl,
+        chooseInId
       });
     } else {
       this.setData({
-        innerFrameUrl: ''
+        innerFrameUrl: '',
+        chooseOutId:0
       })
     }
     if (cornerFrameUrl) {
       this.setData({
         cornerFrameUrl,
+        chooseCornerId
       });
     } else {
       this.setData({
-        cornerFrameUrl: ['', '', '', '']
+        cornerFrameUrl: ['', '', '', ''],
+        chooseCornerId:0
       })
     }
   },
@@ -453,15 +515,18 @@ Page({
     if (id == 0) {
       this.setData({
         outerFrameUrl: '',
+        chooseOutId:0
       })
       console.log('outer frame set none')
     } else {
       this.setData({
         outerFrameUrl: this.data.outerFrames[id].frameSrc,
+        chooseOutId:id
       })
       console.log(this.data.outerFrameUrl)
     }
     wx.setStorageSync('outerFrameUrl', this.data.outerFrameUrl);
+    wx.setStorageSync('chooseOutId', this.data.chooseOutId);
     this.drawAvatarFrame()
   },
   switchInnerFrame: function (event) {
@@ -470,23 +535,29 @@ Page({
     if (id == 0) {
       this.setData({
         innerFrameUrl: '',
+        chooseInId:0
       })
       console.log('inner frame set none')
     } else {
       this.setData({
         innerFrameUrl: this.data.innerFrames[id].frameSrc,
+        chooseInId:id+10
       })
       console.log(this.data.innerFrameUrl)
     }
     wx.setStorageSync('innerFrameUrl', this.data.innerFrameUrl);
+    wx.setStorageSync('chooseInId', this.data.chooseInId);
+
     this.drawAvatarFrame()
   },
   switchCornerFrame: function (event) {
     this.triggerEvent('switchCornerFrame')
     let id = event.currentTarget.dataset.id;
+    console.log("id:",id)
     if (id == 100) {
       this.setData({
-        cornerFrameUrl: ['', '', '', '']
+        cornerFrameUrl: ['', '', '', ''],
+        chooseCornerId:0
       })
       console.log('corner frame set none')
     } else if (id < 110) {
@@ -500,6 +571,7 @@ Page({
     } else if (id < 130) {
       this.setData({
         'cornerFrameUrl[2].value': this.data.cornerFrames[id - 120].frameSrc,
+        chooseCornerId:id
       })
     } else if (id < 140) {
       this.setData({
@@ -507,6 +579,7 @@ Page({
       })
     }
     wx.setStorageSync('cornerFrameUrl', this.data.cornerFrameUrl);
+    wx.setStorageSync('chooseCornerId', this.data.chooseCornerId);
     console.log(this.data.cornerFrameUrl)
     this.drawAvatarFrame()
   },

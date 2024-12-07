@@ -5,7 +5,7 @@ wx.cloud.init({
 })
 // 引入mapData.js的地图数据
 const mapData = require('../../utils/mapData').mapData;
-
+const plantDetailData = require('../../utils/plantDetailData').plantDetailData;
 Page({
 
   /**
@@ -49,7 +49,7 @@ Page({
   getMarkerInfo: function (markerId) {
     // 获取对应marker的详细信息
     // 通过id获取植物详细数据
-    const markerDetail = detailArray[markerId - 1];
+    const markerDetail = plantDetailData[markerId - 1];
     const markerTitle = markerDetail.title;
     const markerContent = markerDetail.content;
     const markerImage = markerDetail.image;
