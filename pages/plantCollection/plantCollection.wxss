@@ -1,26 +1,47 @@
-/* pages/plantCollection/plantCollection.wxss */
-.ellipse_1 {
-    height: 512rpx;
-    width: 512rpx;
-    z-index: 1;
-    position: absolute;
-    top: 107rpx;
-    left: -182rpx;
-    background: #8cf81f;
-    filter: blur(80rpx);
-    opacity: 35%;
-    border-radius: 50%;
-  }
-  
-  .ellipse_2 {
-    height: 622rpx;
-    width: 622rpx;
-    z-index: 1;
-    opacity: 35%;
-    left: 330rpx;
-    top: 250rpx;
-    position: absolute;
-    filter: blur(80rpx);
-    background: #ffd608;
-    border-radius: 50%;
-  }
+.container {
+    height: 100vh;
+    overflow: hidden; 
+    position: relative;
+    /* background-image: url('../../sources/images/backgroundImage.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;  */
+}
+
+.faketabbar {
+  position:absolute;
+  top: 1400rpx;
+  left: 0rpx;
+  height: 190rpx;
+  width:750rpx;
+  padding-bottom: 20px;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.background-image {
+ position: relative;
+ width: 100vh;
+ height: 100vh;
+}
+
+.avatar-unselected {
+    position:relative;
+    width:72rpx;
+    height:72rpx;
+    left:370rpx;
+}
+ 
+.homepage-unselected {
+    width:72rpx;
+    height:72rpx;
+}
+
+.add-unselected {
+    position:relative;
+    width:72rpx;
+    height:72rpx;
+    left:-370rpx;
+}

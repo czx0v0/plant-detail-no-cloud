@@ -1,8 +1,8 @@
 /* pages/plantSearchResult/plantSearchResult.wxss */
 
 .container {
-    height: 100vh; /* 页面高度为屏幕高度 */
-    overflow: hidden; /* 防止页面出现滚动条 */
+    height: 100vh;
+    overflow: hidden; 
     position: relative;
     /* background-image: url('../../sources/images/backgroundImage.png'); 
     background-size: cover; 
