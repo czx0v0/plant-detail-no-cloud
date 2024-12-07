@@ -128,4 +128,17 @@ getImageBase64(imagePath) {
       console.error('获取图片失败:', err);
     });
   },
+
+  onLoad(options) {
+      if(options.resultList) {
+        this.setData({
+            resultList: resultList,
+          });
+      }
+      if(options.imagePath) {
+        this.setData({
+            imagePath: imagePath
+          });
+      }
+  }
 })

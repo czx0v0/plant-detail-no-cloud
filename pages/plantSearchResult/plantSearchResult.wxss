@@ -1,5 +1,19 @@
 /* pages/plantSearchResult/plantSearchResult.wxss */
 
+.container {
+    height: 100vh; /* 页面高度为屏幕高度 */
+    overflow: hidden; /* 防止页面出现滚动条 */
+    position: relative;
+    /* background-image: url('../../sources/images/backgroundImage.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;  */
+}
+.background-image {
+ position: relative;
+ width: 100vh;
+ height: 100vh;
+}
 
 .image-container {
     position:absolute;
@@ -44,10 +58,11 @@
   
   .scroll-container {
     /* 设置滚动区域的最大高度 */
-    max-height: 400rpx;  
+    height:400rpx; 
   }
 
   .result-item {
+      margin: 5rpx;
       position:relative;
       flex-direction: column;
       align-items: flex-start; /* 左对齐，或者你可以根据需求修改 */
@@ -142,7 +157,7 @@
 
   .faketabbar {
       position:absolute;
-      bottom: -190rpx;
+      top: 1400rpx;
       left: 0rpx;
       height: 190rpx;
       width:750rpx;

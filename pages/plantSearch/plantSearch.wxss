@@ -32,13 +32,22 @@
     justify-content: center;
     height: 100vh;
   }
-  
+
+  .image-container {
+    display: flex;
+    justify-content: center; /* 居中图片 */
+    align-items: center;
+    height: 100vh; /* 页面高度为100% */
+    width:100vh;
+    object-fit: contain;
+}
+
   .photo-preview {
-     left: 0;
-     top: 0;
      width: 100%;   /* 可以调整为适当的宽度 */
      height: 80%; /* 根据图片比例自适应 */
      margin-top: 20px;
+     object-fit: contain;
+     overflow: visible; 
      z-index: 100;
   }
   

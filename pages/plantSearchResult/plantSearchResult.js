@@ -14,6 +14,12 @@ Page({
         const percentage = Math.round(value * 100);
         return percentage + '%'; // 加上百分号
     },
+    backToSearchPage() {
+        wx.navigateTo({
+            url: `/pages/plantSearch/plantSearch?resultList=&imagePath=`,
+          });
+    },
+   
     /**
      * 生命周期函数--监听页面加载
      */
@@ -34,11 +40,12 @@ Page({
               imagePath: imagePath
             });
           }
-        const resultList = [
-            { name: '吉娃莲', score: 0.5321 },
-            { name: '兰花', score: 0.2125 },
-            { name: '玫瑰', score: 0.1523 },
-          ];
+        // const resultList = [
+        //     { name: '吉娃莲', score: 0.5321 },
+        //     { name: '兰花', score: 0.2125 },
+        //     { name: '玫瑰', score: 0.1523 },
+        //   ];
+        const resultList = this.data.resultList;
           const resultList1 = resultList.map(item => {
             item.scorePercentage = this.floatToPercentage(item.score);
             return item;
