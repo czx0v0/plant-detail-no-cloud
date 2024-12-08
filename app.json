@@ -2,7 +2,7 @@
     "pages": [
         "pages/testPage/testPage", 
         "pages/plantCollection/plantCollection",
-        "pages/plantSearch/plantSearch",
+        "pages/plantSearch/plantSearch",  
         "pages/plantSearchResult/plantSearchResult",
         "pages/avatar/avatar",
         "pages/home/home",

@@ -32,7 +32,7 @@ Page({
           'cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图标/霸王棕.png',
           'cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图标/鸢尾.png',
           '	cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图标/龙船花unlock.png',
-          '	cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图鉴.JPG'
+          'cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/画卷透明底.png'
         ];
         wx.cloud.getTempFileURL({
             fileList: fileIDs,
