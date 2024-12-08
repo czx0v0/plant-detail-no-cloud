@@ -1,4 +1,7 @@
 <!--pages/plantSearch/plantSearch.wxml-->
+<view class="background-view">
+<!-- <image  class="background-image" src="../../sources/images/backgroundImage.png" /> -->
+</view>
 <view class="container">
   <!-- 选择图片按钮 -->
   <image wx:if="{{!imagePath}}" src="../../sources/icons/photographSearch.png" class='icon' bind:tap="chooseImage"/>
@@ -13,7 +16,7 @@
   <!-- <button wx:if="{{imagePath}}" bindtap="uploadImage" class="upload-button">确定上传</button> -->
   <button wx:if="{{imagePath}}" bindtap="uploadImage" class="upload-button" style="position: relative; left: 0rpx; top: 80rpx">确定上传</button>
 </view>
-<view class="ellipse_1">
+<!-- <view class="ellipse_1">
 </view>
 <view class="ellipse_2">
-</view> 
+</view>  -->

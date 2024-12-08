@@ -1,8 +1,10 @@
 {
     "pages": [
-        "pages/testPage/testPage", 
+        "pages/lori1/lori1",
+        "pages/plantSearch/plantSearch",
+      
+        "pages/testPage/testPage",
         "pages/plantCollection/plantCollection",
-        "pages/plantSearch/plantSearch",  
         "pages/plantSearchResult/plantSearchResult",
         "pages/avatar/avatar",
         "pages/home/home",
