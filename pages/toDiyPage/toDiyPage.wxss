@@ -1,0 +1,91 @@
+/* pages/toDiyPage/toDiyPage.wxss */
+.avatar-page {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
+}
+.ellipse_1 {
+  height: 512rpx;
+  width: 512rpx;
+  z-index: 1;
+  position: absolute;
+  top: 107rpx;
+  left: -182rpx;
+  background: #8cf81f;
+  filter: blur(80rpx);
+  opacity: 35%;
+  border-radius: 50%;
+}
+
+.ellipse_2 {
+  height: 622rpx;
+  width: 622rpx;
+  z-index: 1;
+  opacity: 35%;
+  left: 330rpx;
+  top: 250rpx;
+  position: absolute;
+  filter: blur(80rpx);
+  background: #ffd608;
+  border-radius: 50%;
+}
+.avatar-page .back-container .go-back {
+  border: 0;
+  font-size: 25px;
+  z-index: 1000;
+  padding: 0;
+  margin: 0;
+}
+
+.avatar-page .back-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 6vh;
+  left: 5px;
+  padding: 2px;
+  margin: 2px;
+  width: 100px;
+  height: 30px;
+  z-index: 1000;
+}
+
+.avatar-page .back-container .back-arrow {
+  width: 25px;
+  height: 25px;
+}
+
+.new-frame-container{
+  align-self: center;
+  display: flex;
+  z-index: 1000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+.new-frame-img{
+  scale:70%
+}
+.new-frame-text{
+  color: #999999;
+  font-size: 15px;
+}
+.avatar-page .save-avatar-pic {
+  background: linear-gradient(to right, rgba(218, 255, 173, 1), rgba(125, 246, 18, 1));
+  border-radius: 8px;
+  height: 50px;
+  align-items: center;
+  line-height: 50px;
+  font-size: 15px;
+  width: 90vw;
+  padding: 1px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

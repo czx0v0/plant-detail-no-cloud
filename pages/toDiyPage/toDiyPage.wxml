@@ -1,0 +1,19 @@
+<!--pages/toDiyPage/toDiyPage.wxml-->
+<view class="avatar-page">
+  <!-- 占位view -->
+  <view style="height: 200rpx;"></view>
+  <view class="back-container" bindtap="goBack">
+    <image src="../../sources/img/arrow_left.png" mode="aspectFill" class="back-arrow" />
+    <button plain class="go-back" bindtap="goBack">返回</button>
+  </view>
+  <view class="new-frame-container">
+  <image src="../../sources/img/new_avatar_frame.png" mode="aspectFit" class="new-frame-img"/>
+  <text class = "new-frame-text">还没有制作过头像框</text>
+  </view>
+  <button class="save-avatar-pic" bindtap="toDiyFramePage">
+    <text>使用点亮的植物制作头像框</text></button>
+  <view class="ellipse_1">
+  </view>
+  <view class="ellipse_2">
+  </view>
+</view>
