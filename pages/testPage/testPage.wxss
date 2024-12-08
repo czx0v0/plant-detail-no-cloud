@@ -138,3 +138,31 @@
     line-height: 60rpx; /* 使文字垂直居中 */
     z-index: 9999;      /* 确保 z-index 最高 */
   }
+
+  /* 页面容器 */
+.container-horizontal {
+    position:relative;
+    display: flex;
+    justify-content: center;   /* 水平居中 */
+    align-items: center;       /* 垂直居中 */
+    height: 70vh;  
+    top:15vh;
+    /* background-color: red;  */
+  }
+  
+  /* 水平滚动区域 */
+  .scroll-view-horizontal {
+    width: 100%;               /* 滚动视图宽度为屏幕宽度 */
+    height: 100%;              /* 滚动视图高度为屏幕高度 */
+    overflow: hidden;          /* 隐藏超出区域 */
+    display: flex;
+    justify-content: center;   /* 水平居中内容 */
+  }
+  
+  /* 图片样式 */
+  .plant-whole {
+    width: 1280rpx;            /* 图片宽度 */
+    height: 975rpx;            /* 图片高度 */
+    object-fit: contain;       /* 保持图片比例 */
+  }
+  

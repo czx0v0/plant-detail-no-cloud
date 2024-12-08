@@ -5,7 +5,15 @@ Page({
          // 用于生成12个方块
         imageUrls: [],
         nameList:["三角梅", "华南毛蕨","南美蟛蜞菊","变叶木","滴水观音","???\n探索地图解锁","紫荆花","芒萁","铁树","霸王棕","鸢尾","???\n探索地图解锁"],
-        imagePath: ""
+        imagePath: "",
+        ifShowHorizontal:false
+      },
+
+      changeViewPoint() {
+          console.log("change viewpoint succeeded")
+          this.setData({
+            ifShowHorizontal : !this.data.ifShowHorizontal
+        });
       },
 
     onLoad() {
@@ -23,7 +31,8 @@ Page({
           'cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图标/铁树.png',
           'cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图标/霸王棕.png',
           'cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图标/鸢尾.png',
-          '	cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图标/龙船花unlock.png'
+          '	cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图标/龙船花unlock.png',
+          '	cloud://test1-9grfsypr0a1c2939.7465-test1-9grfsypr0a1c2939-1330285442/植物图鉴.JPG'
         ];
         wx.cloud.getTempFileURL({
             fileList: fileIDs,
@@ -31,7 +40,8 @@ Page({
               // 获取图片的临时链接
               const fileURLs = res.fileList.map(file => file.tempFileURL);
               this.setData({
-                imageUrls: fileURLs
+                imageUrls: fileURLs,
+                imagePath: fileURLs[12] || ''     
               });
             },
             fail: err => {

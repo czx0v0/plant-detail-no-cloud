@@ -1,7 +1,7 @@
 <!--pages/testPage/testPage.wxml-->
-<view class="big-container">
+<view class="big-container" >
     <image class= "background-image" src="../../sources/images/backgroundImage.png" />
-<view class="container">
+<view class="container" wx:if="{{ifShowHorizontal}}">
   <scroll-view class="scroll-view" scroll-y="true" scroll-top="{{scrollTop}}">
     <view class="item-container">
       <view class="item" wx:for="{{blocks}}" wx:key="index">
@@ -14,6 +14,12 @@
   </scroll-view>
 </view>
 
+<view class="container-horizontal" wx:if="{{!ifShowHorizontal}}">
+  <scroll-view class="scroll-view-horizontal" scroll-x="true">
+    <image class="plant-whole" src="{{imagePath}}" />
+  </scroll-view>
+</view>
+
 <view  class="faketabbar">
 <image class="avatar-unselected" src="../../sources/icons/avatar_selected.png"></image>
 <image class="homepage-unselected" src="../../sources/icons/homepage_unselected.png"></image>
@@ -21,5 +27,5 @@
 </view>
 
 <view class="floating-view">制作头像</view>
-<view class="floating-view2">切换视图</view>
+<view class="floating-view2" bind:tap="changeViewPoint">切换视图</view>
 </view>
