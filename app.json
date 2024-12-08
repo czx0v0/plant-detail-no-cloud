@@ -1,5 +1,6 @@
 {
   "pages": [
+      "pages/home/home",
       "pages/avatar/avatar",
       "pages/plantCollection/plantCollection",
       "pages/map/map",
@@ -21,10 +22,15 @@
       "selectedColor": "#www",
       "backgroundColor": "#fff",
       "list": [
+        {
+          "pagePath": "pages/home/home",
+          "iconPath": "sources/icons/homepage_unselected.png",
+          "selectedIconPath": "sources/icons/homepage_selected.png"
+      },
           {
               "pagePath": "pages/map/map",
-              "iconPath": "sources/icons/homepage_unselected.png",
-              "selectedIconPath": "sources/icons/homepage_selected.png"
+              "iconPath": "sources/icons/Add Square_unselected.png",
+              "selectedIconPath": "sources/icons/Add Square_selected.png"
           },
           {
               "pagePath": "pages/avatar/avatar",
