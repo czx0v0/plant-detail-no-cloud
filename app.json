@@ -1,8 +1,9 @@
 {
     "pages": [
-        "pages/plantCollection/plantCollection",
         "pages/plantSearch/plantSearch",
-        "pages/plantSearchResult/plantSearchResult",      
+        "pages/testPage/testPage",
+        "pages/plantCollection/plantCollection",     
+        "pages/plantSearchResult/plantSearchResult",
         "pages/avatar/avatar",
         "pages/home/home",
         "pages/map/map",

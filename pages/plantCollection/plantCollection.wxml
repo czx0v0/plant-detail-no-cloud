@@ -2,6 +2,15 @@
 <view class="container">
 <image class= "background-image" src="../../sources/images/backgroundImage.png" />
 
+<view class="collection-container" style="position: relative; left: 0rpx; top: -1004rpx; height: 780rpx; display: block; box-sizing: border-box">
+  <scroll-view class = "scroll-container" scroll-y="true">
+    <view class="image-list" >
+      <view class="image-item" wx:for="{{images}}" wx:key="index">
+        <image class="image" src="{{item}}" mode="aspectFill" />
+      </view>
+    </view>
+  </scroll-view>
+</view>
 
 <view  class="faketabbar">
 <image class="avatar-unselected" src="../../sources/icons/avatar_selected.png"></image>

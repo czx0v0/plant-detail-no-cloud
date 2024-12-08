@@ -8,6 +8,44 @@
     background-repeat: no-repeat;  */
 }
 
+.collection-container {
+    position:relative;
+    top: -200rpx;
+    /* flex-direction: column; */
+    background-color: red;
+    width:100vh;
+    height:1800rpx;
+  }
+
+  .scroll-container {
+    height:200rpx;
+    background-color: hotpink;
+}
+
+
+.image-list {
+    position:relative;
+    /* display: flex; */
+    background-color: green;
+    /* justify-content: space-between; */
+    width:100vh;
+    height:100vh;
+}
+  
+.image-item {
+    height: 200rpx; 
+    width: 48%;  /* 每个图片占容器宽度的48% */
+    margin-bottom: 10px;  /* 每个图片之间的间隔 */
+    background-color: red;
+  }
+  
+  .image {
+    width: 100%;  /* 图片的宽度100%，填满容器 */
+    height: 200rpx;  /* 图片的高度，可以调整 */
+    border-radius: 10px;  /* 可以根据需要添加圆角 */
+  }
+
+
 .faketabbar {
   position:absolute;
   top: 1400rpx;
@@ -22,9 +60,13 @@
 }
 
 .background-image {
- position: relative;
- width: 100vh;
- height: 100vh;
+ position: absolute;
+ top:0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ object-fit: cover; /* 保持宽高比，填充容器 */
+ z-index: -1; /* 将背景图置于所有内容的下方 */
 }
 
 .avatar-unselected {

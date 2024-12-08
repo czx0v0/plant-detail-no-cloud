@@ -5,13 +5,13 @@
   
    <!-- 选择图片后显示预览 -->
    <view class="image-container">
-    <image wx:if="{{imagePath}}" src="{{imagePath}}" class="photo-preview" />
+    <image mode="aspectFit" wx:if="{{imagePath}}" src="{{imagePath}}" class="photo-preview" />
    </view>
   
 
   <!-- 上传按钮 -->
   <!-- <button wx:if="{{imagePath}}" bindtap="uploadImage" class="upload-button">确定上传</button> -->
-  <button wx:if="{{imagePath}}" bindtap="uploadImage" class="upload-button">确定上传</button>
+  <button wx:if="{{imagePath}}" bindtap="uploadImage" class="upload-button" style="position: relative; left: 0rpx; top: 80rpx">确定上传</button>
 </view>
 <view class="ellipse_1">
 </view>

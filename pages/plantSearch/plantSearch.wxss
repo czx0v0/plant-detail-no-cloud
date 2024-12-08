@@ -37,7 +37,7 @@
     display: flex;
     justify-content: center; /* 居中图片 */
     align-items: center;
-    height: 100vh; /* 页面高度为100% */
+    height: 1000rpx; /* 页面高度为100% */
     width:100vh;
     object-fit: contain;
 }
@@ -55,7 +55,7 @@
     margin-top: 20px;
     background-color: #4caf50;
     color: white;
-    padding: 15px 30px;
+    padding: 30rpx 60rpx;
     border-radius: 5px;
     font-size: 18px;
   }
