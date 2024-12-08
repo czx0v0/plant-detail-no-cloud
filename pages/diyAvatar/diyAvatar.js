@@ -34,7 +34,7 @@ Page({
           {
             frameId: '3',
             frameSrc: '../../sources/img/外框/三角梅-外框.png',
-            isLocked: true
+            isLocked: false
           },
           {
             frameId: '4',
@@ -89,7 +89,7 @@ Page({
           {
             frameId: '12',
             frameSrc: '../../sources/img/内框/内框-2.png',
-            isLocked: true
+            isLocked: false
           },
           {
             frameId: '13',

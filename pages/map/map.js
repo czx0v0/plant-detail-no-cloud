@@ -26,6 +26,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    this.getUserLocation(); 
     this.mapCtx = wx.createMapContext('myMap'); // 获取地图上下文
     // 添加图片覆盖层
     this.addImageOverlay();
@@ -84,7 +85,42 @@ onRegionChange(e) {
     });
   }
 },
+getUserLocation() {
+  const that = this;
+  // wx.getLocation() 获取用户当前位置
+  wx.getLocation({
+    type: 'gcj02', // 腾讯地图支持的坐标系
+    success(res) {
+      console.log('用户当前位置:', res);
+      const { latitude, longitude } = res;
 
+      // 将用户当前位置作为新的标注点加入 markers 数组
+      const userMarker = {
+        id: 0,
+        latitude,
+        longitude,
+        iconPath: '../../utils/resources/marker.png', // 用户位置标注图标
+        width: 50,
+        height: 50
+      };
+
+      // 更新 markers 数组，并设置地图中心为用户当前位置
+      that.setData({
+        latitude,
+        longitude,
+        markers: [...that.data.markers, userMarker]
+      });
+    },
+    fail(err) {
+      console.error('获取地理位置失败:', err);
+      wx.showModal({
+        title: '提示',
+        content: '无法获取地理位置，请检查权限设置。',
+        showCancel: false
+      });
+    }
+  });
+},
  // 添加图片覆盖层
  addImageOverlay() {
   this.mapCtx.addGroundOverlay({
@@ -198,6 +234,7 @@ onRegionChange(e) {
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
+    
 
   },
 

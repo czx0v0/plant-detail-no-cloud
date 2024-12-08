@@ -293,7 +293,7 @@ Page({
   navigateToDiy:function(){
     this.triggerEvent('navigateToDiy');
     wx.navigateTo({
-      url: '/pages/diyAvatar/diyAvatar',
+      url: '/pages/toDiyPage/toDiyPage',
     });
   },
   saveAvatarPic:function(){

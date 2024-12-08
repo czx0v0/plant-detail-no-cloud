@@ -1,41 +1,55 @@
 {
   "pages": [
-      "pages/avatar/avatar",
-      "pages/plantCollection/plantCollection",
-      "pages/map/map",
-      "pages/detail/detail",
-      "pages/diyAvatar/diyAvatar"
+    "pages/avatar/avatar",
+    "pages/plantCollection/plantCollection",
+    "pages/map/map",
+    "pages/detail/detail",
+    "pages/diyAvatar/diyAvatar",
+    "pages/toDiyPage/toDiyPage"
   ],
   "window": {
-      "navigationStyle": "custom",
-      "navigationBarTextStyle": "black",
-      "navigationBarTitleText": "植物地图信息",
-      "navigationBarBackgroundColor": "#cccccc",
-      "backgroundColor": "#eeeeee",
-      "backgroundTextStyle": "light",
-      "homeButton": true
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "植物地图信息",
+    "navigationBarBackgroundColor": "#cccccc",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "homeButton": true
   },
   "tabBar": {
-      "custom": false,
-      "color": "#000",
-      "selectedColor": "#www",
-      "backgroundColor": "#fff",
-      "list": [
-          {
-              "pagePath": "pages/map/map",
-              "iconPath": "sources/icons/homepage_unselected.png",
-              "selectedIconPath": "sources/icons/homepage_selected.png"
-          },
-          {
-              "pagePath": "pages/avatar/avatar",
-              "iconPath": "sources/icons/avatar_unselected.png",
-              "selectedIconPath": "sources/icons/avatar_selected.png"
-          }
-      ]
+    "custom": false,
+    "color": "#000",
+    "selectedColor": "#www",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/detail/detail",
+        "iconPath": "sources/icons/Add_0.png",
+        "selectedIconPath": "sources/icons/Add_1.png"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "iconPath": "sources/icons/homepage_unselected.png",
+        "selectedIconPath": "sources/icons/homepage_selected.png"
+      },
+      {
+        "pagePath": "pages/avatar/avatar",
+        "iconPath": "sources/icons/avatar_unselected.png",
+        "selectedIconPath": "sources/icons/avatar_selected.png"
+      }
+    ]
   },
   "usingComponents": {},
   "style": "v2",
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  }
 }
