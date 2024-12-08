@@ -379,8 +379,8 @@ Page({
       y: 0,
       width: 512,
       height: 512,
-      destHeight: 100,
-      destWidth: 100,
+      destHeight: 500,
+      destWidth: 500,
       success: (res) => {
         const tempFilePath = res.tempFilePath;
         console.log(tempFilePath);

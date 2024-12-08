@@ -5,7 +5,7 @@
 
 <view class="detail-mask" wx:if="{{markerInfo.show}}">
   <view class="light-plant-show-container" wx:if="{{lightPlantShow}}">
-    <image src="../../sources/img/洋紫荆插画.png" class="light-plant-image {{lightCompleted == true?'':'load-img'}}" mode="aspectFill"/>
+    <image src="{{markerInfo.image}}" class="light-plant-image {{lightCompleted == true?'':'load-img'}}" mode="aspectFit"/>
     <view wx:if="{{!lightCompleted}}" class="light-plant-text">
       <text>位置校验中</text>
     </view>
@@ -17,7 +17,7 @@
       </button>
   </view>
   <view class="emoji-show-toggle">
-    <image src="{{emojiShow?'../../sources/img/emojion.png':'../../sources/img/emojioff.png'}}" mode="aspectFill" class="emoji-show-icon" bindtap="emojiShow" />
+    <image src="{{emojiShow?'../../sources/img/emojion.png':'../../sources/img/emojioff.png'}}" mode="aspectFit" class="emoji-show-icon" bindtap="emojiShow" />
   </view>
   <view class="detail-container">
     <view class="detail-back">
@@ -26,7 +26,7 @@
     <view class="detail-header">
       <view class="header-left">
         <view class="image-container">
-          <image class="detail-image" src="{{markerInfo.image}}" alt="the picture of the plant" mode="aspectFill" />
+          <image class="detail-image" src="{{markerInfo.image}}" alt="the picture of the plant" mode="aspectFit" />
         </view>
       </view>
       <view class="header-right">
