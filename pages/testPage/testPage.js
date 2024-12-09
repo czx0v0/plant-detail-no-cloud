@@ -77,10 +77,18 @@ Page({
             }
           });
     },
+    
+    navigateToDiy() {
+        this.triggerEvent('navigateToDiy');
+        wx.navigateTo({
+          url: '/pages/toDiyPage/toDiyPage',
+        });
+      },
 
     onShow() {
         this.setData({
-            selected:2
+            selected:2,
+            ifShowHorizontal:false
         });
     }
 })

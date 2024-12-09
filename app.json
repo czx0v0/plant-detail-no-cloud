@@ -9,6 +9,7 @@
         "pages/map/map",
         "pages/detail/detail",
         "pages/diyAvatar/diyAvatar",
+        "pages/toDiyPage/toDiyPage",
         "components/tabbar/tabbar"
     ],
     "window": {

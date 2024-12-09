@@ -156,11 +156,9 @@ Component({
       setTimeout(()=>{
         this.setData({
           lightCompleted:true,
+          isLighted:true
         });
       },3000)
-      this.setData({
-        isLighted:true
-      })
     },
     lightPlantNotShow:function(){
       this.triggerEvent('lightPlantNotShow')

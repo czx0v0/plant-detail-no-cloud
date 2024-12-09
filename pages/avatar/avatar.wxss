@@ -47,6 +47,8 @@
   border-top: 1px solid #999;
   border-radius: 20px;
   z-index: 999;
+  position: absolute;
+  top:60vh;
 }
 
 .select-info {
@@ -72,22 +74,30 @@
   align-self: center;
 }
 
-.toDiyAvatarFrame {
-  background: linear-gradient(to right, #7DF612, #DAFFAD);
+.avatar-page .toDiyAvatarFrame {
+  background: linear-gradient(to right, rgba(218, 255, 173, 1), rgba(125, 246, 18, 1));
   border-radius: 8px;
-  height: 52px;
-  line-height: 45px;
+  height: 50px;
+  align-items: center;
+  line-height: 50px;
+  font-size: 15px;
+  width: 90vw;
+  padding: 1px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.save-avatar-pic {
-  background: linear-gradient(to right, #ffd608, #fff);
+.avatar-page .save-avatar-pic {
+  background: linear-gradient(to right,#FFF2C8, #ffd608 );
   border-radius: 8px;
-  height: 52px;
-  line-height: 45px;
-  margin-top: 10px;
+  height: 50px;
+  align-items: center;
+  line-height: 50px;
+  font-size: 15px;
+  width: 90vw;
+  padding: 1px;
+  margin: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
