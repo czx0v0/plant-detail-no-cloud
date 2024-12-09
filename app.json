@@ -1,13 +1,11 @@
 {
     "pages": [
-        "pages/lori1/lori1",
+        "pages/home/home",
         "pages/plantSearch/plantSearch",
-      
         "pages/testPage/testPage",
         "pages/plantCollection/plantCollection",
         "pages/plantSearchResult/plantSearchResult",
         "pages/avatar/avatar",
-        "pages/home/home",
         "pages/map/map",
         "pages/detail/detail",
         "pages/diyAvatar/diyAvatar"
