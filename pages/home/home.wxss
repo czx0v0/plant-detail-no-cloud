@@ -1,0 +1,59 @@
+/* container样式 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+  }
+  
+  /* 按钮容器 */
+  .button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  
+  /* 按钮样式 */
+  .button {
+    width: 100%;
+    height: 45px;
+    border-radius: 25px;
+    font-size: 16px;
+    margin: 10px 0;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .button:first-child {
+    background-color: #B2F766; /* 绿色按钮 */
+  }
+  
+  .button:last-child {
+    background-color: #F9DE5B; /* 黄色按钮 */
+  }
+  
+  /* 苹果风格按钮美化 */
+  .button:active {
+    opacity: 0.8;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover; /* 背景图片铺满整个屏幕 */
+    background-position: center; /* 图片居中 */
+    /* base64编码显示背景图片 */
+  }

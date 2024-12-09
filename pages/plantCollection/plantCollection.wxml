@@ -1,5 +1,20 @@
 <!--pages/plantCollection/plantCollection.wxml-->
-<view class="ellipse_1">
+<view class="container">
+<image class= "background-image" src="../../sources/images/backgroundImage.png" />
+
+<view class="collection-container" style="position: relative; left: 0rpx; top: -1004rpx; height: 780rpx; display: block; box-sizing: border-box">
+  <scroll-view class = "scroll-container" scroll-y="true">
+    <view class="image-list" >
+      <view class="image-item" wx:for="{{images}}" wx:key="index">
+        <image class="image" src="{{item}}" mode="aspectFill" />
+      </view>
+    </view>
+  </scroll-view>
 </view>
-<view class="ellipse_2">
+
+<view  class="faketabbar">
+<image class="avatar-unselected" src="../../sources/icons/avatar_selected.png"></image>
+<image class="homepage-unselected" src="../../sources/icons/homepage_unselected.png"></image>
+<image class="add-unselected" src="../../sources/icons/add_unselected.png"></image>
+</view>
 </view>

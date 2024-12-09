@@ -1,0 +1,10 @@
+<view class="container">
+  <!-- 海报背景 -->
+  <view class="background">
+    <!-- 按钮区 -->
+    <view class="button-container">
+      <button class="button" bindtap="goToMap">数字地图</button>
+      <button class="button" bindtap="goToRecognition">植物识别</button>
+    </view>
+  </view>
+</view>
