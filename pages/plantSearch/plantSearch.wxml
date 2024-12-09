@@ -1,6 +1,6 @@
 <!--pages/plantSearch/plantSearch.wxml-->
 <view class="background-view">
-<!-- <image  class="background-image" src="../../sources/images/backgroundImage.png" /> -->
+<image class="background-image" src="../../sources/images/backgroundImage.png" />
 </view>
 <view class="container">
   <!-- 选择图片按钮 -->
