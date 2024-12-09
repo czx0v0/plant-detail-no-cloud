@@ -32,7 +32,7 @@ Page({
     this.getCanvasSize();
     setTimeout(()=>{
       this.drawPoster();
-    },600)
+    },500)
     
     
   },
@@ -55,7 +55,7 @@ Page({
       });
       setTimeout(()=>{
         console.log("canvas",this.data.canvasHeight,this.data.canvasWidth)
-      },600)
+      },500)
       
   },
   drawPoster() {
@@ -108,7 +108,7 @@ Page({
           }
           ctx.save();
           console.log("draw cover complete");
-        }, 800)
+        }, 1000)
 
         setTimeout(() => {
           //绘制照片2
@@ -132,7 +132,7 @@ Page({
           }
           ctx.save();
           console.log("draw coverPhoto complete");
-        }, 1800);
+        }, 2000);
         setTimeout(() => {
           //绘制头像
           const avatarWidth = res[0].width; //宽
@@ -163,7 +163,7 @@ Page({
               ctx.save();
             }
           });
-        }, 3000);
+        }, 3200);
 
         setTimeout(() => {
           //文字
@@ -224,7 +224,7 @@ Page({
           ctx.fillText(smallText, x, y);
           ctx.save();
 
-        }, 3600)
+        }, 3700)
         setTimeout(() => {
           //PositionImg
           ctx.restore();
@@ -236,14 +236,14 @@ Page({
             ctx.drawImage(positionImg, xx, yy, 10, 10);
           }
           ctx.save();
-        }, 4000)
+        }, 4300)
 
         setTimeout(() => {
           that.data.canvas = canvas;
           that.setData({
             posterComplete: true
           })
-        }, 4200)
+        }, 4500)
 
       })
 
