@@ -20,12 +20,14 @@
   </scroll-view>
 </view>
 
-<view  class="faketabbar">
+<!-- <view  class="faketabbar">
 <image class="avatar-unselected" src="../../sources/icons/avatar_selected.png"></image>
 <image class="homepage-unselected" src="../../sources/icons/homepage_unselected.png"></image>
 <image class="add-unselected" src="../../sources/icons/add_unselected.png"></image>
-</view>
+</view> -->
 
+                         
 <view class="floating-view">制作头像</view>
 <view class="floating-view2" bind:tap="changeViewPoint">切换视图</view>
 </view>
+<tab-bar selected="{{selected}}" bind:tabChange="onTabChange"></tab-bar>

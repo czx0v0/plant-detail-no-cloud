@@ -1,0 +1,32 @@
+/* components/tabbar/tabbar.wxss */
+.tab-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 190rpx;  /* 可以根据需要调整高度 */
+    background-color: #fff;  /* 背景色 */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    /* border-top: 1px solid #ddd; */
+  }
+  
+  .tab-item {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .icon {
+    position:relative;
+    top: -30rpx;
+    width: 72rpx;
+    height: 72rpx;
+  }
+  
+  /* .tab-item text {
+    display: block;
+    font-size: 24rpx;
+    color: #333;
+  } */
+  

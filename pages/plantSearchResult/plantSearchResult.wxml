@@ -28,12 +28,14 @@
 <view class="camera-again" bind:tap="backToSearchPage">
 <text class="camera-again-word">再次拍照</text>
 </view>
-<view  class="faketabbar">
+<!-- <view  class="faketabbar">
 <image class="avatar-unselected" src="../../sources/icons/avatar_unselected.png"></image>
 <image class="homepage-unselected" src="../../sources/icons/homepage_unselected.png"></image>
 <image class="add-unselected" src="../../sources/icons/add_unselected.png"></image>
+</view> -->
 </view>
-</view>
+
+<tab-bar selected="{{selected}}" bind:tabChange="onTabChange"></tab-bar>
 <!-- <view class="ellipse_1">
 </view> -->
 <!-- <view class="ellipse_2">

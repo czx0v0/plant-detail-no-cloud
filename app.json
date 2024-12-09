@@ -1,14 +1,15 @@
 {
     "pages": [
         "pages/home/home",
+        "pages/avatar/avatar",
         "pages/plantSearch/plantSearch",
         "pages/testPage/testPage",
         "pages/plantCollection/plantCollection",
         "pages/plantSearchResult/plantSearchResult",
-        "pages/avatar/avatar",
         "pages/map/map",
         "pages/detail/detail",
-        "pages/diyAvatar/diyAvatar"
+        "pages/diyAvatar/diyAvatar",
+        "components/tabbar/tabbar"
     ],
     "window": {
         "navigationStyle": "custom",
@@ -20,7 +21,7 @@
         "homeButton": true
     },
     "tabBar": {
-        "custom": false,
+        "custom": true,
         "color": "#000",
         "selectedColor": "#www",
         "backgroundColor": "#fff",
@@ -41,5 +42,10 @@
     "style": "v2",
     "componentFramework": "glass-easel",
     "sitemapLocation": "sitemap.json",
-    "lazyCodeLoading": "requiredComponents"
+    "lazyCodeLoading": "requiredComponents",
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置将展示"
+        }
+    }
 }

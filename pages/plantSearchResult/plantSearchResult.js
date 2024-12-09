@@ -5,8 +5,36 @@ Page({
      * 页面的初始数据
      */
     data: {
+        selected:4,
         resultList: [],  // 存储传递过来的识别结果
         imagePath:"../../sources/images/zijinghua.jpeg"
+    },
+
+    onTabChange(e) {
+        const index = e.detail.index;
+        console.log("tab changed");
+        // console.log(e);
+        this.setData({
+          selected: index
+        });
+        // console.log(index);
+        // console.log(typeof index); 
+        if (parseInt(index) === 0) {
+            console.log("switch to map");
+            wx.navigateTo({
+                url: '/pages/testPage/testPage',
+            });
+        } else if (parseInt(index) === 1) {
+            console.log("switch to homepage");
+            wx.switchTab({
+              url: '/pages/home/home'
+            });
+        } else if (parseInt(index) === 2) {
+            console.log("switch to detail");
+            wx.switchTab({
+              url: '/pages/avatar/avatar'
+            });
+        }
     },
 
     floatToPercentage(value) {
@@ -15,7 +43,7 @@ Page({
         return percentage + '%'; // 加上百分号
     },
     backToSearchPage() {
-        wx.navigateTo({
+        wx.redirectTo({
             url: `/pages/plantSearch/plantSearch?resultList=&imagePath=`,
           });
     },
@@ -67,7 +95,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        this.setData({
+            selected:4
+        })
     },
 
     /**

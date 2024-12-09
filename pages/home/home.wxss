@@ -70,8 +70,11 @@
   }
 
   .background-image {
+      /* position:relative;
+      top:-150rpx; */
+    /* transform: translateY(-200rpx); */
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     object-fit: cover; /* 背景图片适应容器，保持比例并覆盖整个容器 */
 }
 
@@ -81,7 +84,7 @@
   left:48rpx;           
   width: 654rpx;       
   height: 104rpx;  
-  background: linear-gradient(to right, #DAFFAD, #7DF612);
+  background: linear-gradient(to right, #FFF2C8, #FFD500);
   color: black;       /* 文字颜色 */
   text-align: center;
   font-size: 28rpx;
@@ -98,7 +101,7 @@
   left: 48rpx;           
   width: 654rpx;       
   height: 104rpx;      
-  background: linear-gradient(to right, #FFF2C8, #FFD500);
+  background: linear-gradient(to right, #DAFFAD, #7DF612);
   color: black;   
   text-align: center;
   font-size: 28rpx;

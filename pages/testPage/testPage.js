@@ -1,6 +1,7 @@
 // pages/testPage/testPage.js
 Page({
     data: {
+        selected:2,
         blocks: new Array(12).fill(''),
          // 用于生成12个方块
         imageUrls: [],
@@ -15,6 +16,33 @@ Page({
             ifShowHorizontal : !this.data.ifShowHorizontal
         });
       },
+
+    onTabChange(e) {
+        const index = e.detail.index;
+        console.log("tab changed");
+        // console.log(e);
+        this.setData({
+          selected: index
+        });
+        // console.log(index);
+        // console.log(typeof index); 
+        if (parseInt(index) === 0) {
+            console.log("switch to map");
+            wx.navigateTo({
+                url: '/pages/testPage/testPage',
+            });
+        } else if (parseInt(index) === 1) {
+            console.log("switch to homepage");
+            wx.switchTab({
+              url: '/pages/home/home'
+            });
+        } else if (parseInt(index) === 2) {
+            console.log("switch to detail");
+            wx.switchTab({
+              url: '/pages/avatar/avatar'
+            });
+        }
+    },
 
     onLoad() {
         wx.cloud.init();
@@ -49,4 +77,10 @@ Page({
             }
           });
     },
+
+    onShow() {
+        this.setData({
+            selected:2
+        });
+    }
 })

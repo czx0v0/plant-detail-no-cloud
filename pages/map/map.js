@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    selected:4,
     //纬度
     latitude: 22.59363,
     //经度
@@ -22,9 +23,34 @@ Page({
     maxScale: 20, // 最大缩放比例
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+onTabChange(e) {
+    const index = e.detail.index;
+    console.log("tab changed");
+    // console.log(e);
+    this.setData({
+      selected: index
+    });
+    // console.log(index);
+    // console.log(typeof index); 
+    if (parseInt(index) === 0) {
+        console.log("switch to map");
+        wx.switchTab({
+          url: '/pages/testPage/testPage',
+        });
+    } else if (parseInt(index) === 1) {
+        console.log("switch to homepage");
+        wx.switchTab({
+          url: '/pages/home/home'
+        });
+    } else if (parseInt(index) === 2) {
+        console.log("switch to avatar");
+        wx.switchTab({
+          url: '/pages/avatar/avatar'
+        });
+    }
+},
+
+
   onLoad() {
     this.mapCtx = wx.createMapContext('myMap'); // 获取地图上下文
     // 添加图片覆盖层

@@ -1,10 +1,12 @@
 <view class="background-view">
-<image class="background-image" mode="aspectFill" src="../../sources/images/background_homepage.png" />
+<image class="background-image" mode="aspectFit" src="../../sources/images/background_homepage.png" />
 </view>
 
 
-<view class="floating-view">寻找植物</view>
+<view class="floating-view" bind:tap="navigateToMapPage">寻找植物</view>
 <view class="floating-view2" bind:tap="navigateToSearchPage">拍照识别</view>
+<tab-bar selected="{{selected}}" bind:tabChange="onTabChange"></tab-bar>
+
 <!-- <view class="container"> 
  <view class="background">
     <view class="button-container">

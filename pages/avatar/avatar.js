@@ -5,17 +5,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: defaultAvatarUrl,
-    nickname:'匿名',
-    nicknameInputShow:true,
-    avatarWrapperShow:true,
-    canvas:{}
+      selected:2,
+      avatarUrl: defaultAvatarUrl,
+      nickname:'匿名',
+      nicknameInputShow:true,
+      avatarWrapperShow:true,
+      canvas:{}
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  navigateToCollectionPage() {
+    wx.navigateTo({
+        url: '/pages/testPage/testPage',
+    });
+  },
+  onTabChange(e) {
+    const index = e.detail.index;
+    console.log("tab changed");
+    // console.log(e);
+    
+    // console.log(index);
+    // console.log(typeof index); 
+    if (parseInt(index) === 0) {
+        console.log("switch to map");
+        wx.navigateTo({
+            url: '/pages/testPage/testPage',
+        });
+    } else if (parseInt(index) === 1) {
+        console.log("switch to homepage");
+        wx.switchTab({
+          url: '/pages/home/home'
+        });
+    } else if (parseInt(index) === 2) {
+        console.log("switch to avatar");
+        wx.switchTab({
+          url: '/pages/avatar/avatar'
+        });
+    }
+},
+
+
   onLoad(options) {
+      this.setData({
+          selected:2
+      }); 
     this.loadNickname();//检查本地昵称加载
     this.loadAvatar(); //检查本地头像加载
     this.loadAvatarFrame();
@@ -275,7 +307,7 @@ Page({
       })
     }
   },
-  navigateToDiy:function(){
+  navigateToDiy() {
     this.triggerEvent('navigateToDiy');
     wx.navigateTo({
       url: '/pages/diyAvatar/diyAvatar',
@@ -362,6 +394,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+      this.setData({
+          selected:2
+      });
     this.loadNickname();//检查本地昵称加载
     this.loadAvatar(); //检查本地头像加载
     this.loadAvatarFrame();
