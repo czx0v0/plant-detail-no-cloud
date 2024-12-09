@@ -5,7 +5,8 @@
     "pages/map/map",
     "pages/detail/detail",
     "pages/diyAvatar/diyAvatar",
-    "pages/toDiyPage/toDiyPage"
+    "pages/toDiyPage/toDiyPage",
+    "pages/diyPoster/diyPoster"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -23,7 +24,7 @@
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/detail/detail",
+        "pagePath": "pages/diyPoster/diyPoster",
         "iconPath": "sources/icons/Add_0.png",
         "selectedIconPath": "sources/icons/Add_1.png"
       },
@@ -49,7 +50,7 @@
   ],
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   }
 }
