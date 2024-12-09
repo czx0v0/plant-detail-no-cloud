@@ -1,0 +1,42 @@
+<!--pages/plantSearchResult/plantSearchResult.wxml-->
+<view class="container">
+<image class= "background-image" src="../../sources/images/backgroundImage.png" />
+<view class="image-container">
+    <image class="circular-image" src="{{imagePath}}" />
+</view>
+<text class = "tips">你搜索的植物可能是...</text>
+<view class="result-container">
+  <!-- 使用 wx:for 来遍历 resultList 数组 -->
+  <scroll-view class="scroll-container" scroll-y="true">
+  <view class="result-item" wx:for="{{resultList}}" wx:key="index">
+ 
+    <!-- 使用 wx:for 来遍历 resultList 数组 -->
+    <!-- 列表项内容 -->
+    <text class="item-name" >{{item.name}}</text>
+    <text class="item-score" wx:if="{{index !== 0}}">{{item.scorePercentage}}相似</text>
+    <view class= "most-likely-item" wx:elif="{{index === 0}}">
+    <!-- 当 index 为 0 时显示的布局 -->
+      <text class="item-score0">{{item.scorePercentage}}相似</text>
+      <text class="item-score0-most">最有可能</text>
+    </view>
+    <view class="post-maker">
+    <text class= "post-maker-word">生成海报</text>
+    </view>
+  </view>
+</scroll-view>
+</view>
+<view class="camera-again" bind:tap="backToSearchPage">
+<text class="camera-again-word">再次拍照</text>
+</view>
+<!-- <view  class="faketabbar">
+<image class="avatar-unselected" src="../../sources/icons/avatar_unselected.png"></image>
+<image class="homepage-unselected" src="../../sources/icons/homepage_unselected.png"></image>
+<image class="add-unselected" src="../../sources/icons/add_unselected.png"></image>
+</view> -->
+</view>
+
+<tab-bar selected="{{selected}}" bind:tabChange="onTabChange"></tab-bar>
+<!-- <view class="ellipse_1">
+</view> -->
+<!-- <view class="ellipse_2">
+</view>  -->

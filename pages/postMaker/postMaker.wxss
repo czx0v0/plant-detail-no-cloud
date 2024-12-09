@@ -1,0 +1,99 @@
+/* pages/plantSearch/plantSearch.wxss */
+.ellipse_1 {
+    height: 512rpx;
+    width: 512rpx;
+    z-index: 1;
+    position: absolute;
+    top: 107rpx;
+    left: -182rpx;
+    background: #8cf81f;
+    filter: blur(80rpx);
+    opacity: 35%;
+    border-radius: 50%;
+  }
+  
+  .ellipse_2 {
+    height: 622rpx;
+    width: 622rpx;
+    z-index: 1;
+    opacity: 35%;
+    left: 330rpx;
+    top: 250rpx;
+    position: absolute;
+    filter: blur(80rpx);
+    background: #ffd608;
+    border-radius: 50%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center; /* 居中图片 */
+    align-items: center;
+    height: 1000rpx; /* 页面高度为100% */
+    width:100vw;
+    object-fit: contain;
+}
+
+  .photo-preview {
+     width: 100%;   /* 可以调整为适当的宽度 */
+     height: 80%; /* 根据图片比例自适应 */
+     margin-top: 20px;
+     object-fit: contain;
+     overflow: visible; 
+     z-index: 100;
+  }
+  
+  .upload-button {
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 30rpx 60rpx;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+
+.icon {
+    position: absolute; /* 绝对定位 */
+    top: 50%; /* 距离容器顶部 50% */
+    left: 50%; /* 距离容器左侧 50% */
+    transform: translate(-50%, -50%); /* 平移以真正居中 */
+    width: 412rpx;
+    height: 412rpx;
+}
+
+ .tips {
+    position: relative;
+    left: 0;
+    top: 700rpx;
+    text-align: center;
+    font-size: 20rpx;
+    text-align: center;
+    color: #999999; /* 红色字体 */
+}
+
+.background-view {
+    overflow: hidden;  
+    position: fixed;  
+    top: 0;           
+    left: 0;         
+    width: 100vw;     
+    height: 100vh;     
+    background-color: blueviolet;
+    z-index: -1;  
+  }
+
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+  }
+  

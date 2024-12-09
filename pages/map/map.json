@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "detail":"../../components/detail/detail",
-    "barrage":"../../components/barrage/barrage"
+      "detail":"../../components/detail/detail",
+      "barrage":"../../components/barrage/barrage",
+      "tab-bar": "/components/tabbar/tabbar"
   }
 }

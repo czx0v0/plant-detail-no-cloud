@@ -1,26 +1,89 @@
-/* pages/plantCollection/plantCollection.wxss */
-.ellipse_1 {
-    height: 512rpx;
-    width: 512rpx;
-    z-index: 1;
-    position: absolute;
-    top: 107rpx;
-    left: -182rpx;
-    background: #8cf81f;
-    filter: blur(80rpx);
-    opacity: 35%;
-    border-radius: 50%;
+.container {
+    height: 100vh;
+    overflow: hidden; 
+    position: relative;
+    /* background-image: url('../../sources/images/backgroundImage.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;  */
+}
+
+.collection-container {
+    position:relative;
+    top: -200rpx;
+    /* flex-direction: column; */
+    background-color: red;
+    width:100vh;
+    height:1800rpx;
+  }
+
+  .scroll-container {
+    height:200rpx;
+    background-color: hotpink;
+}
+
+
+.image-list {
+    position:relative;
+    /* display: flex; */
+    background-color: green;
+    /* justify-content: space-between; */
+    width:100vh;
+    height:100vh;
+}
+  
+.image-item {
+    height: 200rpx; 
+    width: 48%;  /* 每个图片占容器宽度的48% */
+    margin-bottom: 10px;  /* 每个图片之间的间隔 */
+    background-color: red;
   }
   
-  .ellipse_2 {
-    height: 622rpx;
-    width: 622rpx;
-    z-index: 1;
-    opacity: 35%;
-    left: 330rpx;
-    top: 250rpx;
-    position: absolute;
-    filter: blur(80rpx);
-    background: #ffd608;
-    border-radius: 50%;
+  .image {
+    width: 100%;  /* 图片的宽度100%，填满容器 */
+    height: 200rpx;  /* 图片的高度，可以调整 */
+    border-radius: 10px;  /* 可以根据需要添加圆角 */
   }
+
+
+.faketabbar {
+  position:absolute;
+  top: 1400rpx;
+  left: 0rpx;
+  height: 190rpx;
+  width:750rpx;
+  padding-bottom: 20px;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.background-image {
+ position: absolute;
+ top:0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ object-fit: cover; /* 保持宽高比，填充容器 */
+ z-index: -1; /* 将背景图置于所有内容的下方 */
+}
+
+.avatar-unselected {
+    position:relative;
+    width:72rpx;
+    height:72rpx;
+    left:370rpx;
+}
+ 
+.homepage-unselected {
+    width:72rpx;
+    height:72rpx;
+}
+
+.add-unselected {
+    position:relative;
+    width:72rpx;
+    height:72rpx;
+    left:-370rpx;
+}

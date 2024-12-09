@@ -1,0 +1,168 @@
+/* pages/testPage/testPage.wxss */
+.container {
+    height: 100vh;
+    overflow: hidden; 
+    position: relative;
+    /* background-image: url('../../sources/images/backgroundImage.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;  */
+}
+.background-image {
+    position: absolute; /* 使用绝对定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保持宽高比，填充容器 */
+    z-index: -1; /* 将背景图置于所有内容的下方 */
+}
+
+.container {
+  position: relative;
+  top:200rpx;
+  left:40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.scroll-view {
+  width: 100%;
+  /* 设定 scroll-view 的高度 */
+  height: 1210rpx;
+}
+
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx; /* 方块之间的间隔 */
+}
+
+.item {
+  width: 40%; /* 每行两个 */
+  padding: 10rpx;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 370rpx; /* 每个方块的高度 */
+    /* background-color: red; */
+    border: 1rpx solid rgba(0, 0, 0, 0.2);
+    border-radius: 22rpx;
+    box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.3);
+    flex-direction: column; /* 子元素按垂直方向排列 */
+}
+
+.item-image {
+    width: 50%; /* 让图片宽度充满容器 */
+    height: 200rpx; /* 设置图片的高度 */
+    border-radius: 8rpx; /* 图片圆角 */
+    margin-bottom: 10rpx; /* 图片和文字之间的间距 */
+  }
+  
+.item-text {
+    position: relative;
+    font-size: 24rpx;
+    font-weight: bold;
+    color: #333;
+    text-align: center; 
+}
+
+.faketabbar {
+    position:absolute;
+    top: 1400rpx;
+    left: 0rpx;
+    height: 190rpx;
+    width:750rpx;
+    padding-bottom: 20px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+  }
+    
+  .avatar-unselected {
+      position:relative;
+      width:72rpx;
+      height:72rpx;
+      left:370rpx;
+  }
+   
+  .homepage-unselected {
+      width:72rpx;
+      height:72rpx;
+  }
+
+  .add-unselected {
+    position:relative;
+    width:72rpx;
+    height:72rpx;
+    left:-370rpx;
+}
+
+.floating-view {
+    position: fixed;   /* 固定在屏幕上，不受滚动影响 */
+    top: 82vh; 
+    left: 490rpx;            /* 固定在屏幕顶部，适当修改 */
+    /* left: 800rpx;            固定在屏幕左侧，适当修改 */
+    width: 208rpx;        /* 设置为全宽 */
+    height: 70rpx;      /* 设置悬浮视图的高度 */
+    background: linear-gradient(to right, #DAFFAD, #7DF612);
+    color: black;       /* 文字颜色 */
+    text-align: center;
+    font-size: 24rpx;
+    /* border: 1rpx solid rgba(0, 0, 0, 0.2); */
+    border-radius: 52rpx;
+    box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.2);
+    line-height: 70rpx; /* 使文字垂直居中 */
+    z-index: 9999;      /* 确保 z-index 最高 */
+  }
+
+  .floating-view2 {
+    position: fixed;   /* 固定在屏幕上，不受滚动影响 */
+    top: 77vh; 
+    left: 490rpx;           
+    width: 208rpx;       
+    height: 70rpx;      
+    background: linear-gradient(to right, #FFF2C8, #FFD500);
+    color: black;   
+    text-align: center;
+    font-size: 24rpx;
+    /* border: 1rpx solid rgba(0, 0, 0, 0.2); */
+    border-radius: 52rpx;
+    box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.2);
+    line-height: 70rpx; /* 使文字垂直居中 */
+    z-index: 9999;      /* 确保 z-index 最高 */
+  }
+
+  /* 页面容器 */
+.container-horizontal {
+    position:relative;
+    display: flex;
+    justify-content: center;   /* 水平居中 */
+    align-items: center;       /* 垂直居中 */
+    height: 70vh;  
+    top:15vh;
+    /* background-color: red;  */
+  }
+  
+  /* 水平滚动区域 */
+  .scroll-view-horizontal {
+    width: 100%;               /* 滚动视图宽度为屏幕宽度 */
+    height: 100%;              /* 滚动视图高度为屏幕高度 */
+    overflow: hidden;          /* 隐藏超出区域 */
+    display: flex;
+    justify-content: center;   /* 水平居中内容 */
+  }
+  
+  /* 图片样式 */
+  .plant-whole {
+    width: 1280rpx;            /* 图片宽度 */
+    height: 975rpx;            /* 图片高度 */
+    object-fit: contain;       /* 保持图片比例 */
+  }
+  

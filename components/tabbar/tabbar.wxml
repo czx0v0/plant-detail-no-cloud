@@ -1,0 +1,15 @@
+<!--components/tabbar/tabbar.wxml-->
+<view class="tab-bar">
+  <view class="tab-item" bindtap="onTabTap" data-index="0">
+    <image class="icon" src="{{selected === 0 ? '../../sources/icons/add_selected.png' : '../../sources/icons/add_unselected.png'}}" />
+    <!-- <text>首页</text> -->
+  </view>
+  <view class="tab-item" bindtap="onTabTap" data-index="1">
+    <image class="icon" src="{{selected === 1 ? '../../sources/icons/homepage_selected.png' : '../../sources/icons/homepage_unselected.png'}}" />
+    <!-- <text>日志</text> -->
+  </view>
+  <view class="tab-item" bindtap="onTabTap" data-index="2">
+    <image class="icon" src="{{selected === 2 ? '../../sources/icons/avatar_selected.png' : '../../sources/icons/avatar_unselected.png'}}" />
+    <!-- <text>我的</text> -->
+  </view>
+</view>

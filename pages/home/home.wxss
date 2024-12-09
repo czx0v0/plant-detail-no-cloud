@@ -1,0 +1,113 @@
+/* container样式 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+  }
+  
+  /* 按钮容器 */
+  .button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  
+  /* 按钮样式 */
+  .button {
+    width: 100%;
+    height: 45px;
+    border-radius: 25px;
+    font-size: 16px;
+    margin: 10px 0;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .button:first-child {
+    background-color: #B2F766; /* 绿色按钮 */
+  }
+  
+  .button:last-child {
+    background-color: #F9DE5B; /* 黄色按钮 */
+  }
+  
+  /* 苹果风格按钮美化 */
+  .button:active {
+    opacity: 0.8;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover; /* 背景图片铺满整个屏幕 */
+    background-position: center; /* 图片居中 */
+    /* base64编码显示背景图片 */
+  }
+
+  .background-view {
+    overflow: hidden;  
+    position: fixed;  /* 固定定位 */
+    top: 0;           /* 顶部对齐 */
+    left: 0;          /* 左边对齐 */
+    width: 100vw;      /* 宽度为全屏 */
+    height: 100vh;     /* 高度为全屏 */
+    background-color: white;
+    z-index: -1;  /* 保证背景图在最底层 */
+  }
+
+  .background-image {
+      /* position:relative;
+      top:-150rpx; */
+    /* transform: translateY(-200rpx); */
+    width: 100vw;
+    height: 90vh;
+    object-fit: cover; /* 背景图片适应容器，保持比例并覆盖整个容器 */
+}
+
+.floating-view2 {
+  position: fixed; 
+  top: 1300rpx; 
+  left:48rpx;           
+  width: 654rpx;       
+  height: 104rpx;  
+  background: linear-gradient(to right, #FFF2C8, #FFD500);
+  color: black;       /* 文字颜色 */
+  text-align: center;
+  font-size: 28rpx;
+  /* border: 1rpx solid rgba(0, 0, 0, 0.2); */
+  border-radius: 16rpx;
+  box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.2);
+  line-height: 104rpx; /* 使文字垂直居中 */
+  z-index: 9999;      /* 确保 z-index 最高 */
+}
+
+.floating-view {
+  position: fixed;   /* 固定在屏幕上，不受滚动影响 */
+  top: 1154rpx; 
+  left: 48rpx;           
+  width: 654rpx;       
+  height: 104rpx;      
+  background: linear-gradient(to right, #DAFFAD, #7DF612);
+  color: black;   
+  text-align: center;
+  font-size: 28rpx;
+  /* border: 1rpx solid rgba(0, 0, 0, 0.2); */
+  border-radius: 16rpx;
+  box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.2);
+  line-height: 104rpx; /* 使文字垂直居中 */
+  z-index: 9999;      /* 确保 z-index 最高 */
+}

@@ -1,3 +1,7 @@
+<view class="background-view">
+<image class="background-image" mode="aspectFill" src="../../sources/images/backgroundImage.png" />
+</view>
+
 <view class="avatar-page">
   <!-- 占位view -->
   <view style="height: 200rpx;"></view>
@@ -13,16 +17,20 @@
     <input type="nickname" class="weui-input" placeholder="请输入昵称" bindconfirm="onNicknameInput" wx:if="{{nicknameInputShow}}" />
     <view class="nickname" bind:tap="changeNickname"> {{nickname}}</view>
   </view>
-  <view class="history-container">
-  <image src="../../sources/img/history.png" mode="aspectFill" class="history-img"/><text class="history-text">查看历史记录</text></view>
-  <button class="toDiyAvatarFrame" bindtap="navigateToDiy">
+  <!-- <view class="history-container">
+  <image src="../../sources/img/history.png" mode="aspectFill" class="history-img"/><text class="history-text">查看历史记录</text></view> -->
+  <!-- <button class="toDiyAvatarFrame" bindtap="navigateToDiy">
   <text>定制头像框</text>
   </button>
   <button class="save-avatar-pic" >
   <text>我的图鉴</text>
-  </button>
-  <view class="ellipse_1">
+  </button> -->
+  <!-- <view class="ellipse_1">
   </view>
   <view class="ellipse_2">
-  </view>
+  </view> -->
+
 </view>
+<view class="floating-view" bindtap="navigateToDiy">我的植物头像框</view>
+<view class="floating-view2" bind:tap="navigateToCollectionPage">植物图鉴</view>
+<tab-bar selected="{{selected}}" bind:tabChange="onTabChange"></tab-bar>
