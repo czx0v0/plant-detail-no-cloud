@@ -16,10 +16,11 @@ Page({
     innerFrameUrl: '',
     cornerFrameUrl: ['', '', '', ''],
     bigText: ['倾听自然'],
-    scaleWH:1,
-    posterComplete:false
-
-
+    scaleWH: 1,
+    posterComplete: false,
+    positionUrl: '../../sources/img/icon.png',
+    canvasWidth:0,
+    canvasHeight:0
   },
 
   /**
@@ -28,7 +29,34 @@ Page({
   onLoad(options) {
     this.loadAvatar(); //检查本地头像加载
     this.loadNickname();
-    this.drawPoster();
+    this.getCanvasSize();
+    setTimeout(()=>{
+      this.drawPoster();
+    },600)
+    
+    
+  },
+  getCanvasSize(){
+    var that = this;
+    const queryFather = wx.createSelectorQuery().in(this);
+    queryFather.select('#canvas-container')
+      .fields({ size: true, rect: true })
+      .exec((res) => {
+        if (res && res[0]) {
+          let rect = res[0]
+          console.log(rect)
+          let canvasWidth = rect.width;
+          let canvasHeight = rect.height*0.78;
+          this.setData({
+            canvasWidth: canvasWidth,
+            canvasHeight: canvasHeight
+          });
+        }
+      });
+      setTimeout(()=>{
+        console.log("canvas",this.data.canvasHeight,this.data.canvasWidth)
+      },600)
+      
   },
   drawPoster() {
     // 存储this
@@ -54,7 +82,7 @@ Page({
         const photoHeight = res[0].height;
         const photoImg = canvas.createImage(); //图像
         that.setData({
-          scaleWH:photoHeight/photoWidth,
+          scaleWH: photoHeight / photoWidth,
         })
         ctx.save();
         ctx.globalCompositeOperation = 'source-over';
@@ -152,6 +180,16 @@ Page({
           let y = 30;
           ctx.fillText(nickText, x, y);
           ctx.save();
+          //positionText
+          ctx.restore();
+          let positionText = '在清华深研院';
+          ctx.font = '10px sans-serif';
+          ctx.fillStyle = '#083517';
+          ctx.textAlign = 'center';
+          x = photoWidth / 2 + 50;
+          y = 55;
+          ctx.fillText(positionText, x, y);
+          ctx.save();
           //plantName
           ctx.restore();
           let plantText = '与 ';
@@ -171,7 +209,7 @@ Page({
           ctx.fillStyle = '#083517';
           ctx.textAlign = 'center';
           x = photoWidth / 2;
-          y = photoHeight / 2 + photoWidth / 2 +15;
+          y = photoHeight / 2 + photoWidth / 2 + 15;
           ctx.fillText(bigText, x, y);
           ctx.save();
 
@@ -187,14 +225,26 @@ Page({
           ctx.save();
 
         }, 3600)
+        setTimeout(() => {
+          //PositionImg
+          ctx.restore();
+          const positionImg = canvas.createImage();
+          positionImg.src = that.data.positionUrl;
+          let xx = photoWidth / 2;
+          let yy = 45;
+          positionImg.onload = () => {
+            ctx.drawImage(positionImg, xx, yy, 10, 10);
+          }
+          ctx.save();
+        }, 4000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
           that.data.canvas = canvas;
           that.setData({
-            posterComplete:true
+            posterComplete: true
           })
-        },4000)
-        
+        }, 4200)
+
       })
 
   },
@@ -208,8 +258,8 @@ Page({
       x: 0,
       y: 0,
       width: 1000,
-      height: 1000*that.data.scaleWH,
-      destHeight: 1000*that.data.scaleWH,
+      height: 1000 * that.data.scaleWH,
+      destHeight: 1000 * that.data.scaleWH,
       destWidth: 1000,
       success: (res) => {
         const tempFilePath = res.tempFilePath;
