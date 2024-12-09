@@ -522,7 +522,6 @@ Page({
 
   },
   goBack: function () {
-    this.triggerEvent('goBack');
     wx.navigateBack({
       delta: 1,
       success: function (res) {
