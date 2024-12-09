@@ -1,0 +1,22 @@
+<!--pages/diyPoster/diyPoster.wxml-->
+<view class="avatar-page">
+  <view class="ellipse_1">
+  </view>
+  <view class="ellipse_2">
+  </view>
+  <view class="canvas-container">
+    <view class="detail-back">
+      <image class="go-back" bindtap="backToMap" src="../../sources/img/back-x.png" mode="aspectFit">返回</image>
+    </view>
+    <canvas type="2d" id="posterCanvas" canvas-id="posterCanvas" class="poster-canvas">
+    </canvas>
+
+    <button class="save-avatar-pic" wx:if="{{!posterComplete}}">
+      <text>海报生成中</text>
+    </button>
+    <button class="save-avatar-pic" bindtap="saveAvatarPic" wx:if="{{posterComplete}}">
+      <text>保存到手机</text>
+    </button>
+  </view>
+
+</view>

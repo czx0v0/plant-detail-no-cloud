@@ -28,7 +28,7 @@ Page({
     if (parseInt(index) === 0) {
         console.log("switch to map");
         wx.navigateTo({
-            url: '/pages/testPage/testPage',
+            url: '/pages/postMaker/postMaker',
         });
     } else if (parseInt(index) === 1) {
         console.log("switch to homepage");

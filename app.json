@@ -2,6 +2,7 @@
     "pages": [
         "pages/home/home",
         "pages/avatar/avatar",
+        "pages/diyPoster/diyPoster",
         "pages/plantSearch/plantSearch",
         "pages/testPage/testPage",
         "pages/plantCollection/plantCollection",
@@ -10,7 +11,8 @@
         "pages/detail/detail",
         "pages/diyAvatar/diyAvatar",
         "pages/toDiyPage/toDiyPage",
-        "components/tabbar/tabbar"
+        "components/tabbar/tabbar",
+        "pages/postMaker/postMaker"
     ],
     "window": {
         "navigationStyle": "custom",
