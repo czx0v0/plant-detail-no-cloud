@@ -45,8 +45,8 @@ Page({
         // ctx.fillRect(0,0,10,10)
         //绘制头像
         const avatarWidth = res[0].width; // 头像的宽
-        const avatarSize = avatarWidth * 0.9; // 头像尺寸
-        const avatarOffset = avatarWidth * 0.05; // 边距
+        const avatarSize = avatarWidth * 1; // 头像尺寸
+        const avatarOffset = avatarWidth * 0; // 边距
         const avatarImg = canvas.createImage(); //头像图像
         // 从链接获取头像图像信息
         wx.getImageInfo({
@@ -77,103 +77,144 @@ Page({
       
   },
   drawFrame(canvas, avatarWidth) {
-    var that = this;
+    this.drawInnerFrame(canvas, avatarWidth);
+    setTimeout(() => {
+      this.drawOuterFrame(canvas, avatarWidth);
+      setTimeout(() => {
+        this.drawCornerFrame(canvas, avatarWidth);
+      }, 500)
+    }, 500)
+  },
+  drawInnerFrame: function (canvas, avatarWidth) {
     // 绘制内框
-    if (this.data.innerFrameUrl != '') {
-      const frameSize = avatarWidth * 0.9;
-      const ctx = canvas.getContext('2d');
-      ctx.save();
-      ctx.globalCompositeOperation = 'source-over';
-      // 头像框的位置
-      const framePosition = [{
-        x: avatarWidth * 0.05,
-        y: avatarWidth * 0.05
-      }, ];
-      framePosition.forEach((pos, index) => {
-        console.log(index);
-        const frameImg = canvas.createImage()
-        if (index == 0) {
-          frameImg.src = this.data.innerFrameUrl;
-        }
-        frameImg.onload = () => {
-          ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
-        }
-      });
-      ctx.restore();
-    }
+    return new Promise((resolve) => {
+      if (this.data.innerFrameUrl != '') {
+        const frameSize = avatarWidth * 0.8;
+        const ctx = canvas.getContext('2d');
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        // 头像框的位置
+        const framePosition = [{
+          x: avatarWidth * 0.1,
+          y: avatarWidth * 0.1
+        }, ];
+        framePosition.forEach((pos, index) => {
+          console.log(index);
+          const frameImg = canvas.createImage()
+          if (index == 0) {
+            frameImg.src = this.data.innerFrameUrl;
+          }
+          frameImg.onload = () => {
+            ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
+          }
+          console.log("draw inner complete");
+        });
+        ctx.restore();
+        resolve();
+      }
+    })
+  },
+  drawOuterFrame: function (canvas, avatarWidth) {
     // 绘制外框
-    if (this.data.outerFrameUrl != '') {
-      const frameSize = avatarWidth;
-      const ctx = canvas.getContext('2d');
-      ctx.save();
-      ctx.globalCompositeOperation = 'source-over';
+    return new Promise((resolve) => {
+      if (this.data.outerFrameUrl != '') {
+        const frameSize = avatarWidth;
+        const ctx = canvas.getContext('2d');
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
 
-      // 头像框的位置
-      const framePosition = [{
-        x: 0,
-        y: 0
-      }];
-      framePosition.forEach((pos, index) => {
-        console.log(index);
-        const frameImg = canvas.createImage()
-        if (index == 0) {
-          frameImg.src = this.data.outerFrameUrl;
-        }
-        frameImg.onload = () => {
-          ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
-        }
-      });
-      ctx.restore();
-    }
-    // 绘制四角边框
-    if (this.data.cornerFrameUrl[0] != '' || this.data.cornerFrameUrl[1] != '' || this.data.cornerFrameUrl[2] != '' || this.data.cornerFrameUrl[3] != '') {
-      const frameSize = avatarWidth * 0.3;
-      const ctx = canvas.getContext('2d');
-      ctx.save();
-      ctx.globalCompositeOperation = 'source-over';
-      // 头像框的位置
-      const framePosition = [{
-          x: 5,
-          y: 0
-        },
-        {
+        // 头像框的位置
+        const framePosition = [{
           x: 0,
-          y: avatarWidth - frameSize
-        },
-        {
-          x: avatarWidth - frameSize,
-          y: 0,
-        },
-        {
-          x: avatarWidth - frameSize,
-          y: avatarWidth - frameSize,
-        }
-      ];
-      framePosition.forEach((pos, index) => {
-        console.log(index);
-        console.log(pos);
-        const frameImg = canvas.createImage();
+          y: 0
+        }];
+        framePosition.forEach((pos, index) => {
+          console.log(index);
+          const frameImg = canvas.createImage()
+          if (index == 0) {
+            frameImg.src = this.data.outerFrameUrl;
+          }
+          frameImg.onload = () => {
+            ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
+          }
+          console.log("draw outer complete");
+        });
+        ctx.restore();
+        resolve();
+      }
+    })
 
-        if (index == 0 && that.data.cornerFrameUrl[0].value) {
-          console.log(that.data.cornerFrameUrl[0].value)
-          frameImg.src = that.data.cornerFrameUrl[0].value;
-        } else if (index == 1 && that.data.cornerFrameUrl[1].value) {
-          console.log(that.data.cornerFrameUrl[1].value)
-          frameImg.src = that.data.cornerFrameUrl[1].value;
-        } else if (index == 2 && that.data.cornerFrameUrl[2].value) {
-          console.log(that.data.cornerFrameUrl[2].value)
-          frameImg.src = that.data.cornerFrameUrl[2].value;
-        } else if (index == 3 && that.data.cornerFrameUrl[3].value) {
-          console.log(that.data.cornerFrameUrl[3].value)
-          frameImg.src = that.data.cornerFrameUrl[3].value;
-        }
-        frameImg.onload = () => {
-          ctx.drawImage(frameImg, pos.x, pos.y, frameSize, frameSize);
-        }
-    });
-  ctx.restore();
-}
-},
+  },
+  drawCornerFrame(canvas, avatarWidth) {
+    // 绘制四角边框
+    return new Promise((resolve) => {
+      var that = this;
+      if (this.data.cornerFrameUrl[0] != '' || this.data.cornerFrameUrl[1] != '' || this.data.cornerFrameUrl[2] != '' || this.data.cornerFrameUrl[3] != '') {
+        const frameSize = avatarWidth * 0.2;
+        const ctx = canvas.getContext('2d');
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        // 头像框的位置
+        const framePosition = [{
+            x: 5,
+            y: 5
+          },
+          {
+            x: 0,
+            y: avatarWidth - frameSize - 5
+          },
+          {
+            x: avatarWidth - frameSize - 5,
+            y: 5,
+          },
+          {
+            x: avatarWidth - frameSize - 5,
+            y: avatarWidth - frameSize - 5,
+          }
+        ];
+        framePosition.forEach((pos, index) => {
+          console.log(index);
+          console.log(pos);
+          const frameImg = canvas.createImage();
+          let imgSrc = '';
+          if (index == 0 && that.data.cornerFrameUrl[0].value) {
+            console.log(that.data.cornerFrameUrl[0].value)
+            frameImg.src = that.data.cornerFrameUrl[0].value;
+            imgSrc = that.data.cornerFrameUrl[0].value;
+          } else if (index == 1 && that.data.cornerFrameUrl[1].value) {
+            console.log(that.data.cornerFrameUrl[1].value)
+            frameImg.src = that.data.cornerFrameUrl[1].value;
+            imgSrc = that.data.cornerFrameUrl[1].value;
+          } else if (index == 2 && that.data.cornerFrameUrl[2].value) {
+            console.log(that.data.cornerFrameUrl[2].value)
+            frameImg.src = that.data.cornerFrameUrl[2].value;
+            imgSrc = that.data.cornerFrameUrl[2].value;
+          } else if (index == 3 && that.data.cornerFrameUrl[3].value) {
+            console.log(that.data.cornerFrameUrl[3].value)
+            frameImg.src = that.data.cornerFrameUrl[3].value;
+            imgSrc = that.data.cornerFrameUrl[3].value;
+          }
+          wx.getImageInfo({
+            src: imgSrc,
+            success: function (res) {
+              console.log("get info success")
+              let imgWidth = res.width
+              let imgHeight = res.height
+              // 宽高比
+              that.data.scaleWH = imgWidth / imgHeight
+            }
+          })
+          console.log("scale:", that.data.scaleWH)
+          frameImg.onload = () => {
+            ctx.drawImage(frameImg, pos.x - frameSize * that.data.scaleWH + frameSize, pos.y, frameSize * that.data.scaleWH, frameSize);
+          }
+          console.log("draw corner complete");
+        });
+        ctx.restore();
+      }
+      resolve();
+    })
+  },
   onChooseAvatar(e) {
     //头像选择
     //（onGetUserInfo在新版本已不使用）
@@ -278,7 +319,7 @@ Page({
   navigateToDiy:function(){
     this.triggerEvent('navigateToDiy');
     wx.navigateTo({
-      url: '/pages/diyAvatar/diyAvatar',
+      url: '/pages/toDiyPage/toDiyPage',
     });
   },
   saveAvatarPic:function(){
