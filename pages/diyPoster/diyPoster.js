@@ -18,7 +18,10 @@ Page({
     cornerFrameUrl: ['', '', '', ''],
     bigText: ['倾听自然'],
     scaleWH:1,
-    posterComplete:false
+    posterComplete:false,
+    positionUrl: '../../sources/img/icon.png',
+    canvasWidth:0,
+    canvasHeight:0
 
 
   },
@@ -27,16 +30,43 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options);
-    const photoUrl = decodeURIComponent(options.photoUrl);
-    console.log(photoUrl);
-    const cleanedUrl = photoUrl.replace(/^"|"$/g, '');
-    this.setData({
-        photoUrl: cleanedUrl
-    })
+    // console.log(options);
+    // const photoUrl = decodeURIComponent(options.photoUrl);
+    // console.log(photoUrl);
+    // const cleanedUrl = photoUrl.replace(/^"|"$/g, '');
+    // this.setData({
+    //     photoUrl: cleanedUrl
+    // })
     this.loadAvatar(); //检查本地头像加载
     this.loadNickname();
-    this.drawPoster();
+    this.loadPhoto();
+    this.loadPlantName();
+    this.getCanvasSize();
+    setTimeout(()=>{
+      this.drawPoster();
+    },500)
+  },
+  getCanvasSize(){
+    var that = this;
+    const queryFather = wx.createSelectorQuery().in(this);
+    queryFather.select('#canvas-container')
+      .fields({ size: true, rect: true })
+      .exec((res) => {
+        if (res && res[0]) {
+          let rect = res[0]
+          console.log(rect)
+          let canvasWidth = rect.width;
+          let canvasHeight = rect.height*0.78;
+          this.setData({
+            canvasWidth: canvasWidth,
+            canvasHeight: canvasHeight
+          });
+        }
+      });
+      setTimeout(()=>{
+        console.log("canvas",this.data.canvasHeight,this.data.canvasWidth)
+      },500)
+      
   },
   drawPoster() {
     // 存储this
@@ -62,7 +92,7 @@ Page({
         const photoHeight = res[0].height;
         const photoImg = canvas.createImage(); //图像
         that.setData({
-          scaleWH:photoHeight/photoWidth,
+          scaleWH: photoHeight / photoWidth,
         })
         ctx.save();
         ctx.globalCompositeOperation = 'source-over';
@@ -88,7 +118,7 @@ Page({
           }
           ctx.save();
           console.log("draw cover complete");
-        }, 800)
+        }, 1000)
 
         setTimeout(() => {
           //绘制照片2
@@ -112,7 +142,7 @@ Page({
           }
           ctx.save();
           console.log("draw coverPhoto complete");
-        }, 1800);
+        }, 2000);
         setTimeout(() => {
           //绘制头像
           const avatarWidth = res[0].width; //宽
@@ -143,7 +173,7 @@ Page({
               ctx.save();
             }
           });
-        }, 3000);
+        }, 3200);
 
         setTimeout(() => {
           //文字
@@ -159,6 +189,16 @@ Page({
           let x = photoWidth / 2;
           let y = 30;
           ctx.fillText(nickText, x, y);
+          ctx.save();
+          //positionText
+          ctx.restore();
+          let positionText = '在清华深研院';
+          ctx.font = '10px sans-serif';
+          ctx.fillStyle = '#083517';
+          ctx.textAlign = 'center';
+          x = photoWidth / 2 + 50;
+          y = 55;
+          ctx.fillText(positionText, x, y);
           ctx.save();
           //plantName
           ctx.restore();
@@ -179,7 +219,7 @@ Page({
           ctx.fillStyle = '#083517';
           ctx.textAlign = 'center';
           x = photoWidth / 2;
-          y = photoHeight / 2 + photoWidth / 2 +15;
+          y = photoHeight / 2 + photoWidth / 2 + 15;
           ctx.fillText(bigText, x, y);
           ctx.save();
 
@@ -194,15 +234,27 @@ Page({
           ctx.fillText(smallText, x, y);
           ctx.save();
 
-        }, 3600)
+        }, 3700)
+        setTimeout(() => {
+          //PositionImg
+          ctx.restore();
+          const positionImg = canvas.createImage();
+          positionImg.src = that.data.positionUrl;
+          let xx = photoWidth / 2;
+          let yy = 45;
+          positionImg.onload = () => {
+            ctx.drawImage(positionImg, xx, yy, 10, 10);
+          }
+          ctx.save();
+        }, 4300)
 
-        setTimeout(()=>{
+        setTimeout(() => {
           that.data.canvas = canvas;
           that.setData({
-            posterComplete:true
+            posterComplete: true
           })
-        },4000)
-        
+        }, 4500)
+
       })
 
   },
@@ -338,6 +390,29 @@ Page({
       });
     }
   },
+  loadPhoto() {
+    //检查本地头像加载
+    const photoUrl = wx.getStorageSync('photoUrl');
+    if (photoUrl) {
+      this.setData({
+        photoUrl,
+      });
+    } else {
+    }
+  },
+  loadPlantName() {
+    //检查本地头像加载
+    const plantName = wx.getStorageSync('plantName');
+    if (plantName) {
+      this.setData({
+        plantName,
+      });
+    } else {
+      this.setData({
+        plantName:'植物',
+      });
+    }
+  },
   loadNickname() {
     //检查本地昵称加载
     const nickname = wx.getStorageSync('nickname');
@@ -352,5 +427,15 @@ Page({
       })
 
     }
+  },
+  goBack: function () {
+    
+    if(this.data.posterComplete){
+      console.log('back');
+      wx.navigateTo({
+        url: '/pages/postMaker/postMaker',
+      });
+    }
+    
   },
 })

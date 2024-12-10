@@ -1,19 +1,33 @@
 /* components/detail/detail.wxss */
+.detail-mask-untap {
+  position: fixed;
+  top: 154px;
+  left: 34px;
+  right: 34px;
+  bottom: 110px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:transparent;
+  z-index: 2;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
 .detail-mask {
   position: fixed;
   top: 154px;
   left: 34px;
   right: 34px;
-  bottom: 10px;
+  bottom: 110px;
   border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.7);
-  z-index: 2;
+  z-index: 5;
   backdrop-filter: blur(5px);
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-  pointer-events: none;
 }
 
 .detail-container {

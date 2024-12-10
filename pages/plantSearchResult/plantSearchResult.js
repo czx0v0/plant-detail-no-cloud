@@ -133,5 +133,14 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+    toDiyPoster(event){
+      let plantName = event.currentTarget.dataset.name;
+      console.log('to Poster',plantName)
+      wx.setStorageSync('photoUrl', this.data.imagePath);
+      wx.setStorageSync('plantName', plantName)
+      wx.navigateTo({
+        url: '/pages/diyPoster/diyPoster',
+      })
     }
 })
