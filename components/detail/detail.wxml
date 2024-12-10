@@ -2,7 +2,7 @@
 <view class="barrage-mask" wx:if="{{markerInfo.show&emojiShow}}">
   <barrage emojiBarrage="{{emojiDetail}}"></barrage>
 </view>
-
+<view class="detail-mask-untap" wx:if="{{markerInfo.show}}"></view>
 <view class="detail-mask" wx:if="{{markerInfo.show}}">
   <view class="light-plant-show-container" wx:if="{{lightPlantShow}}">
     <image src="{{markerInfo.image}}" class="light-plant-image {{lightCompleted == true?'':'load-img'}}" mode="aspectFit"/>

@@ -5,10 +5,10 @@
   <view class="ellipse_2">
   </view>
   <view class="canvas-container">
-    <view class="detail-back">
-      <image class="go-back" bindtap="backToMap" src="../../sources/img/back-x.png" mode="aspectFit">返回</image>
+    <view class="detail-back" bindtap="goBack">
+      <image class="go-back"  src="../../sources/img/back-x.png" mode="aspectFit">返回</image>
     </view>
-    <canvas type="2d" id="posterCanvas" canvas-id="posterCanvas" class="poster-canvas">
+    <canvas type="2d" id="posterCanvas" canvas-id="posterCanvas" class="poster-canvas" height="{{this.data.canvasHeight}}" width="{{this.data.canvasWidth}}">
     </canvas>
 
     <button class="save-avatar-pic" wx:if="{{!posterComplete}}">

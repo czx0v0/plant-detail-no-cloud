@@ -62,5 +62,16 @@ Page({
      */
     onShareAppMessage() {
 
-    }
+    },
+    goBack: function () {
+      wx.navigateBack({
+        delta: 1,
+        success: function (res) {
+          console.log('back success');
+        },
+        fail: function (err) {
+          console.log('back failed', err);
+        }
+      });
+    },
 })

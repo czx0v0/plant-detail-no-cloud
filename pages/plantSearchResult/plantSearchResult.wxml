@@ -20,7 +20,7 @@
       <text class="item-score0-most">最有可能</text>
     </view>
     <view class="post-maker">
-    <text class= "post-maker-word">生成海报</text>
+    <text class= "post-maker-word" data-name="{{item.name}}" bind:tap="toDiyPoster">生成海报</text>
     </view>
   </view>
 </scroll-view>
